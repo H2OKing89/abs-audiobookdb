@@ -20,7 +20,7 @@ ADR-001: raw/Bearer Authorization first; optional AUDIOBOOKDB_API_KEY only when 
 ## Fixed resource policy
 
 | Resource | Limit |
-|---|---|
+| --- | --- |
 | Total request / upstream attempt | 8 seconds / 2 seconds, including admission/auth/pacing |
 | Attempts / documented daily cost | 10 / 12 per request, including auth; no internal retry |
 | Upstream concurrency / pace | 4 globally / 4 starts per second |
@@ -41,7 +41,7 @@ ADR-002: key by nonlogged credential fingerprint plus canonical input; immutable
 
 ## Direct deployment
 
-No reverse proxy dependency. Same-host/network namespace: http://127.0.0.1:8080, with loopback publication for host-local ABS. Shared Docker: http://adapter:8080, no host publication. Private LAN: http://<lan-host>:8080 with explicit intended-interface publication. Inside ABS containers localhost means that container; use service DNS or reachable host address. Network name configurable; target Unraid uses existing proxynet and 99:100. HTTP default :8080; optional native TLS requires both readable cert/key paths, TLS >=1.2 and certificate-verified health. No certificate issuance automation.
+No reverse proxy dependency. Same-host/network namespace: <http://127.0.0.1:8080>, with loopback publication for host-local ABS. Shared Docker: <http://adapter:8080>, no host publication. Private LAN: http://<lan-host>:8080 with explicit intended-interface publication. Inside ABS containers localhost means that container; use service DNS or reachable host address. Network name configurable; target Unraid uses existing proxynet and 99:100. HTTP default :8080; optional native TLS requires both readable cert/key paths, TLS >=1.2 and certificate-verified health. No certificate issuance automation.
 
 ## Operations and acceptance
 

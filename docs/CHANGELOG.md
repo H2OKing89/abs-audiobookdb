@@ -6,7 +6,7 @@ Owner: Quentin
 Baseline: 1.0 (private MVP)
 
 | ID | Date | Change | Evidence | Affected records | Retest |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | CHANGE-001 | 2026-10-05 | Created draft planning scaffold from supplied discussion; API claims explicitly unverified | User conversation | Baseline 0.1 | All checks pending |
 | CHANGE-002 | 2026-10-05 | Clarified that local `.env` ABS host and API credentials support development/testing only and are excluded from adapter configuration and packaging | User clarification | README; architecture credential modes | Documentation reviewed; no live tests run |
 | CHANGE-003 | 2026-10-05 | Added bounded SPIKE-001–005 plans and recorded Gate A readiness for investigation; baseline remains unfinalized | User testing instruction; Gate A review | Spike register/plans; phase gates | Gates B/C pending |

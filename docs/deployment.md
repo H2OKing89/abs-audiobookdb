@@ -17,7 +17,7 @@ narrators but omit language/subtitle; select a result to inspect language.
 ## Choose a direct URL
 
 | Layout | Adapter URL / Compose configuration |
-|---|---|
+| --- | --- |
 | Shared Docker network | `http://adapter:8080`; default Compose, `DOCKER_NETWORK` matches ABS |
 | ABS on host | `http://127.0.0.1:8080`; add `compose.host.yaml` with default loopback binding |
 | Private LAN | `http://<host-lan-address>:8080`; add host override and set `BIND_ADDRESS` explicitly |
@@ -38,7 +38,7 @@ temporary projects and left existing Compose Manager projects untouched.
 ## Runtime settings
 
 | Variable | Behavior |
-|---|---|
+| --- | --- |
 | `AUDIOBOOKDB_CONTACT` | Required real email/public HTTPS contact in User-Agent |
 | `AUDIOBOOKDB_API_KEY` | Optional single-user fallback; used only if Authorization is absent |
 | `AUDIOBOOKDB_BASE_URL` | Default `https://audiobookdb.org/api`; verified HTTPS required |

@@ -6,6 +6,7 @@ Owner: Quentin
 Baseline: 1.0 (private MVP)
 
 ## Gate A — planning ready for spikes
+
 - [x] Scope reviewed; proposed requirements accepted as provisional spike criteria; existing deferrals retained.
 - [x] Contracts, mapping and uncertainty inventory complete for investigation.
 - [x] Spikes have questions, procedures, fixtures and pass/fail criteria.
@@ -14,6 +15,7 @@ Baseline: 1.0 (private MVP)
 See the [Gate A review](../reviews/gate-a-2026-10-05.md). Design acceptance and production authorization remain subject to Gate C.
 
 ## Gate B — spike findings reconciled
+
 - [x] All required spikes executed or explicitly scoped out with rationale.
 - [x] Actual outcomes and sanitized evidence recorded.
 - [x] Differences update requirements, contracts, architecture and tests.
@@ -21,6 +23,7 @@ See the [Gate A review](../reviews/gate-a-2026-10-05.md). Design acceptance and 
 - [x] Decisions record rejected alternatives and consequences.
 
 ## Gate C — planning finalized; MVP can start
+
 - [x] Gates A and B passed.
 - [x] No unresolved blocking contract, security or deployment questions.
 - [x] Measurable acceptance criteria and request budgets fixed.
