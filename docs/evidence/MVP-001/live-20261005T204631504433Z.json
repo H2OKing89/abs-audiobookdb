@@ -1,0 +1,38 @@
+{
+  "captured_at_utc": "20261005T204631504433Z",
+  "classification": "delivered_adapter_live_read_only_audiobookdb",
+  "outcome": "Pass",
+  "stop_reason": null,
+  "checks": [
+    {
+      "check": "title_cold",
+      "http_status": 200,
+      "seconds": 1.668,
+      "documented_cost_ceiling": 12,
+      "outcome": "Pass",
+      "match_count": 3
+    },
+    {
+      "check": "title_warm",
+      "http_status": 200,
+      "seconds": 0.229,
+      "documented_cost_ceiling": 1,
+      "outcome": "Pass",
+      "match_count": 3
+    },
+    {
+      "check": "invalid_key_warm_query",
+      "http_status": 401,
+      "seconds": 0.263,
+      "documented_cost_ceiling": 1,
+      "outcome": "Pass"
+    }
+  ],
+  "image_id": "sha256:0ecc83262330460ec0559e3d5f53f4d77e4fb644c9fa534337637da4c1022074",
+  "searches_attempted": 3,
+  "total_documented_cost_ceiling": 14,
+  "prior_failed_search_documented_cost": 4,
+  "temporary_container_removed": true,
+  "runner_sha256": "f510c5ad9515442567242ba3979b4f9b5aa43edfca005faa46cef54f4cf38ac8",
+  "limitations": "No production key revoked; invalid key is synthetic. Counts/latencies only; mapped catalog content stays in memory. Prior four units inferred from auth+search and deterministic flattened-search decode failure in old source, not measured quota accounting. Per-request ceilings are not measured actual API accounting."
+}

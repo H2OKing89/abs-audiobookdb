@@ -1,0 +1,6 @@
+# Add with: docker compose -f compose.yaml -f compose.host.yaml up -d
+# Select 127.0.0.1 for host-local ABS or your intended private LAN address.
+services:
+  adapter:
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${ADAPTER_PORT:-8080}:8080"

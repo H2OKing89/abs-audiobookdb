@@ -1,0 +1,19 @@
+{
+  "captured_at_utc": "20261005T175936724499Z",
+  "classification": "isolated_abs_live_integration_with_synthetic_provider",
+  "image": "ghcr.io/advplyr/audiobookshelf@sha256:581d68b2a6fc7ebf58d81c878a9f387cbbc0d88ac9d37b298b9cee10168af85b",
+  "outcome": "Incomplete",
+  "stop_reason": "CalledProcessError",
+  "checks": [],
+  "cleanup": [
+    {
+      "resource_type": "container",
+      "removed": true
+    },
+    {
+      "resource_type": "network",
+      "removed": true
+    }
+  ],
+  "limitations": "Temporary ABS only; no production credentials/settings accessed. UI result is a separate record. This is not an upstream AudiobookDB timeout or final Unraid deployment test."
+}

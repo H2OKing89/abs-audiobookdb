@@ -1,0 +1,16 @@
+{
+  "captured_at_utc": "20261005T180510305224Z",
+  "classification": "synthetic_go_httptest_race_experiment",
+  "outcome": "Fail",
+  "exit_code": 1,
+  "go_version": "go version go1.25.10 linux/amd64",
+  "command": "go test -race -v ./...",
+  "transcript": "race-20261005T180510305224Z.txt",
+  "sentinel_output_scan_pass": true,
+  "source_sha256": {
+    "lab.go": "bf6c5add25783865a361477814d5cf7abfa500965b1bed29b4354da402b9bdd8",
+    "lab_test.go": "7edd95265178c26c661b78bfc8121ef8891ecf8b7b3193effb140403befd1bc4",
+    "go.mod": "6186a2c94c915b24a6a5ffc8e9d7c5258875783ef8bfcfd8b74ba973042d0cba"
+  },
+  "limitations": "Synthetic validation endpoint, keys, data and timings only; no live revocation, full memory bound or real end-to-end latency established."
+}

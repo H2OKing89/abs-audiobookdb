@@ -1,0 +1,108 @@
+{
+  "captured_at_utc": "20261005T175901724340Z",
+  "classification": "isolated_abs_live_integration_with_synthetic_provider",
+  "image": "ghcr.io/advplyr/audiobookshelf@sha256:581d68b2a6fc7ebf58d81c878a9f387cbbc0d88ac9d37b298b9cee10168af85b",
+  "outcome": "Pass",
+  "stop_reason": null,
+  "checks": [
+    {
+      "check": "actual_request_raw_auth_params_and_two_editions",
+      "outcome": "Pass",
+      "capture": {
+        "method": "GET",
+        "query_keys": [
+          "author",
+          "mediaType",
+          "query"
+        ],
+        "media_type": "book",
+        "auth_matches_expected": true,
+        "delay_seconds": 0,
+        "fixture_status": 200
+      },
+      "note": "ISBN supplied to search API was not forwarded by its controller."
+    },
+    {
+      "check": "delay_1",
+      "outcome": "Pass",
+      "elapsed_seconds": 1.008,
+      "match_count": 2,
+      "http_status": 200
+    },
+    {
+      "check": "delay_5",
+      "outcome": "Pass",
+      "elapsed_seconds": 5.021,
+      "match_count": 2,
+      "http_status": 200
+    },
+    {
+      "check": "delay_11",
+      "outcome": "Pass",
+      "elapsed_seconds": 10.006,
+      "match_count": 0,
+      "http_status": 200
+    },
+    {
+      "check": "provider_http_400",
+      "outcome": "Pass",
+      "abs_http_status": 200,
+      "match_count": 0
+    },
+    {
+      "check": "provider_http_401",
+      "outcome": "Pass",
+      "abs_http_status": 200,
+      "match_count": 0
+    },
+    {
+      "check": "provider_http_404",
+      "outcome": "Pass",
+      "abs_http_status": 200,
+      "match_count": 0
+    },
+    {
+      "check": "provider_http_429",
+      "outcome": "Pass",
+      "abs_http_status": 200,
+      "match_count": 0
+    },
+    {
+      "check": "provider_http_500",
+      "outcome": "Pass",
+      "abs_http_status": 200,
+      "match_count": 0
+    },
+    {
+      "check": "provider_http_503",
+      "outcome": "Pass",
+      "abs_http_status": 200,
+      "match_count": 0
+    },
+    {
+      "check": "malformed_success_envelope",
+      "outcome": "Pass",
+      "abs_http_status": 200,
+      "match_count": 0
+    },
+    {
+      "check": "isolated_abs_logs_secret_scan",
+      "outcome": "Pass"
+    }
+  ],
+  "cleanup": [
+    {
+      "resource_type": "container",
+      "removed": true
+    },
+    {
+      "resource_type": "container",
+      "removed": true
+    },
+    {
+      "resource_type": "network",
+      "removed": true
+    }
+  ],
+  "limitations": "Temporary ABS only; no production credentials/settings accessed. UI result is a separate record. This is not an upstream AudiobookDB timeout or final Unraid deployment test."
+}

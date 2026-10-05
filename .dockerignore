@@ -1,0 +1,14 @@
+.env
+.env.*
+secrets
+certs
+.git
+spikes
+docs/evidence
+bin
+dist
+abs-audiobookdb
+__pycache__
+*.py[cod]
+node_modules
+*.tar

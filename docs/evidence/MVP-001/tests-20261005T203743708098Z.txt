@@ -1,0 +1,45 @@
+=== RUN   TestHealthTrustAndStatus
+2026/10/05 15:37:44 http: TLS handshake error from 127.0.0.1:56982: remote error: tls: bad certificate
+2026/10/05 15:37:44 http: TLS handshake error from 127.0.0.1:57002: remote error: tls: bad certificate
+--- PASS: TestHealthTrustAndStatus (0.08s)
+PASS
+ok  	abs-audiobookdb/cmd/abs-audiobookdb	1.095s
+=== RUN   TestCombinedBudget
+--- PASS: TestCombinedBudget (0.00s)
+=== RUN   TestResponsesRateAndNoRedirect
+--- PASS: TestResponsesRateAndNoRedirect (1.76s)
+=== RUN   TestPacingCancellationAndConcurrency
+--- PASS: TestPacingCancellationAndConcurrency (2.16s)
+=== RUN   TestTLSValidationAndAttemptTimeout
+2026/10/05 15:37:48 http: TLS handshake error from 127.0.0.1:40380: remote error: tls: bad certificate
+--- PASS: TestTLSValidationAndAttemptTimeout (2.13s)
+PASS
+ok  	abs-audiobookdb/internal/audiobookdb	7.058s
+=== RUN   TestBoundsExpiryIsolationGeneration
+--- PASS: TestBoundsExpiryIsolationGeneration (0.03s)
+=== RUN   TestParallelScopes
+--- PASS: TestParallelScopes (0.00s)
+PASS
+ok  	abs-audiobookdb/internal/cache	(cached)
+=== RUN   TestRuntimeConfig
+--- PASS: TestRuntimeConfig (0.00s)
+PASS
+ok  	abs-audiobookdb/internal/config	1.007s
+=== RUN   TestInputRules
+--- PASS: TestInputRules (0.00s)
+=== RUN   TestFixtureMapping
+--- PASS: TestFixtureMapping (0.00s)
+=== RUN   TestPipelineCacheAuthRoundRobinAndExact
+=== PAUSE TestPipelineCacheAuthRoundRobinAndExact
+=== RUN   TestAdmissionAndCancellation
+--- PASS: TestAdmissionAndCancellation (0.05s)
+=== CONT  TestPipelineCacheAuthRoundRobinAndExact
+--- PASS: TestPipelineCacheAuthRoundRobinAndExact (5.27s)
+PASS
+ok  	abs-audiobookdb/internal/provider	(cached)
+=== RUN   TestCredentialRulesAndSafeLogs
+--- PASS: TestCredentialRulesAndSafeLogs (0.00s)
+=== RUN   TestMethodsInputAndHeaderLimits
+--- PASS: TestMethodsInputAndHeaderLimits (0.00s)
+PASS
+ok  	abs-audiobookdb/internal/server	1.009s

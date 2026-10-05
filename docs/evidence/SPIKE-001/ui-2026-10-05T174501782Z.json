@@ -1,0 +1,10 @@
+{
+  "captured_at_utc": "2026-10-05T17:45:18.133Z",
+  "classification": "isolated_abs_rendered_ui",
+  "outcome": "Incomplete",
+  "stage": "login",
+  "stop_reason": "TimeoutError",
+  "checks": [],
+  "item_write_request_count": 0,
+  "limitations": "Synthetic editions and disposable ABS only; no live library or upstream API. Screenshots contain only invented fixture data."
+}

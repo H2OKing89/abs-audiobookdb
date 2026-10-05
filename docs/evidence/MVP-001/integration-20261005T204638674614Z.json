@@ -1,0 +1,81 @@
+{
+  "captured_at_utc": "20261005T204638674614Z",
+  "classification": "delivered_adapter_isolated_abs_and_synthetic_tls_upstream",
+  "outcome": "Pass",
+  "stage": "stop",
+  "stop_reason": null,
+  "checks": [
+    {
+      "check": "four_editions_cold_and_fresh_auth_warm",
+      "outcome": "Pass",
+      "cold_seconds": 1.516,
+      "warm_seconds": 0.233,
+      "cold_upstream_attempts": 7,
+      "warm_upstream_attempts": 1
+    },
+    {
+      "check": "invalid_key_and_fixture_revocation_reject_warm_cache",
+      "outcome": "Pass"
+    },
+    {
+      "check": "abs_2_37_1_delivered_adapter_four_matches",
+      "outcome": "Pass"
+    },
+    {
+      "check": "ui_select_Narrator_A",
+      "outcome": "Pass"
+    },
+    {
+      "check": "ui_select_Narrator_B",
+      "outcome": "Pass"
+    },
+    {
+      "check": "ui_select_Full_Cast",
+      "outcome": "Pass"
+    },
+    {
+      "check": "ui_same_narrator_french_release_language",
+      "outcome": "Pass"
+    },
+    {
+      "check": "ui_no_item_writes_or_default_provider_searches",
+      "outcome": "Pass"
+    },
+    {
+      "check": "adapter_and_abs_private_log_scan",
+      "outcome": "Pass"
+    },
+    {
+      "check": "container_256_mib_limit_and_uid_gid",
+      "outcome": "Pass",
+      "user": "99:100"
+    },
+    {
+      "check": "delivered_graceful_shutdown",
+      "outcome": "Pass",
+      "seconds": 0.191
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "network",
+      "removed": true
+    }
+  ],
+  "image": "abs-audiobookdb:mvp-20261005",
+  "image_id": "sha256:0ecc83262330460ec0559e3d5f53f4d77e4fb644c9fa534337637da4c1022074",
+  "runner_sha256": "43cbb812b01da059eb00ab5cd049cce507d8512995d290bb0e095e08d63977e4",
+  "limitations": "Synthetic catalog/authentication only; separate real API and target deployment evidence. No live ABS library modified. Screenshots omitted; UI uses invented fixtures only. ABS match cards omit language/subtitle; selecting the duplicate narrator recording exposes language in its form."
+}

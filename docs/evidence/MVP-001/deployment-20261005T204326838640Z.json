@@ -1,0 +1,61 @@
+{
+  "captured_at_utc": "20261005T204326838640Z",
+  "classification": "delivered_adapter_live_unraid_disposable_project",
+  "outcome": "Pass",
+  "stage": "shutdown",
+  "stop_reason": null,
+  "versions": {
+    "docker": "29.5.3",
+    "compose": "5.5.0"
+  },
+  "checks": [
+    {
+      "check": "http_99_100_memory_health_shared_network_and_binding",
+      "outcome": "Pass",
+      "binding": "loopback"
+    },
+    {
+      "check": "native_99_100_memory_health_shared_network_and_binding",
+      "outcome": "Pass",
+      "binding": "private_lan"
+    },
+    {
+      "check": "untrusted_tls_wrong_san_unreadable_key_rejected",
+      "outcome": "Pass"
+    },
+    {
+      "check": "both_graceful_shutdown_exit_zero",
+      "outcome": "Pass",
+      "seconds": 0.612
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "project",
+      "removed": true,
+      "note": "Nonzero can mean never created or already removed."
+    },
+    {
+      "resource": "negative",
+      "removed": true,
+      "note": "Nonzero can mean never created or already removed."
+    },
+    {
+      "resource": "image",
+      "removed": true,
+      "note": "Nonzero can mean never created or already removed."
+    },
+    {
+      "resource": "transfer_tag",
+      "removed": false,
+      "note": "Nonzero can mean never created or already removed."
+    },
+    {
+      "resource": "remote_lab",
+      "removed": true,
+      "note": "Nonzero can mean never created or already removed."
+    }
+  ],
+  "runner_sha256": "28b6e400704072256ced7d61de29801163058a8586411ecd30f245eface231b5",
+  "limitations": "Actual Unraid host, temporary project only; no existing projects or live ABS configured. Native TLS LAN listener also checked from development machine with trusted certificate. No upstream API calls or reverse proxy."
+}

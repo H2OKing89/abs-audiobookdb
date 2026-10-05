@@ -1,0 +1,62 @@
+{
+  "captured_at_utc": "20261005T204638690611Z",
+  "classification": "delivered_adapter_live_unraid_disposable_project",
+  "outcome": "Pass",
+  "stage": "shutdown",
+  "stop_reason": null,
+  "versions": {
+    "docker": "29.5.3",
+    "compose": "5.5.0"
+  },
+  "checks": [
+    {
+      "check": "http_99_100_memory_health_shared_network_and_binding",
+      "outcome": "Pass",
+      "binding": "loopback_and_private_lan"
+    },
+    {
+      "check": "native_99_100_memory_health_shared_network_and_binding",
+      "outcome": "Pass",
+      "binding": "private_lan"
+    },
+    {
+      "check": "untrusted_tls_wrong_san_unreadable_key_rejected",
+      "outcome": "Pass"
+    },
+    {
+      "check": "both_graceful_shutdown_exit_zero",
+      "outcome": "Pass",
+      "seconds": 0.625
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "project",
+      "removed": true,
+      "note": "Nonzero can mean never created or already removed."
+    },
+    {
+      "resource": "negative",
+      "removed": true,
+      "note": "Nonzero can mean never created or already removed."
+    },
+    {
+      "resource": "image",
+      "removed": true,
+      "note": "Nonzero can mean never created or already removed."
+    },
+    {
+      "resource": "transfer_tag",
+      "removed": false,
+      "note": "Nonzero can mean never created or already removed."
+    },
+    {
+      "resource": "remote_lab",
+      "removed": true,
+      "note": "Nonzero can mean never created or already removed."
+    }
+  ],
+  "image_id": "sha256:0ecc83262330460ec0559e3d5f53f4d77e4fb644c9fa534337637da4c1022074",
+  "runner_sha256": "bca76e09bbd5cc683db3fc5a57a99ee6b769c74ab70bb8e83280ca8a030a8e25",
+  "limitations": "Actual Unraid host, temporary project only; no existing projects or live ABS configured. HTTP and native TLS LAN listeners also checked from development machine. No upstream API calls or reverse proxy."
+}

@@ -1,0 +1,10 @@
+# Provide your own certificate/key; the certificate must include 127.0.0.1
+# for the built-in health check, plus the name ABS uses to connect.
+services:
+  adapter:
+    environment:
+      TLS_CERT_FILE: /certs/server.crt
+      TLS_KEY_FILE: /certs/server.key
+      HEALTH_CA_FILE: /certs/ca.crt
+    volumes:
+      - "${TLS_DIRECTORY:?Set certificate directory}:/certs:ro"

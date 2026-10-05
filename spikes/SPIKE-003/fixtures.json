@@ -1,0 +1,1331 @@
+{
+  "classification": "synthetic",
+  "provenance": "Invented locally from public schema field names and pinned ABS source behavior; no captured catalog payloads.",
+  "status": "Prepared; mapper and UI execution not run",
+  "upstream_schema_sha256": "1377bdfff99a7775a7071fef7279c56a28bb7430d55ba365a8cfb8628d03fedf",
+  "cases": [
+    {
+      "name": "known-title-author",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        }
+      },
+      "expected_properties": [
+        "One match; Author relation supplies author and Narrator relation supplies narrator.",
+        "All proposed ABS mapping fields have explicit output or omission rules; runtime converts numeric units to minutes."
+      ]
+    },
+    {
+      "name": "ambiguous-title",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        },
+        "alternateBook": {
+          "id": "SB0000000002",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000003",
+                "name": "Another Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "alternateReleases": [
+          {
+            "id": "SR0000000002",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000002",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected_properties": [
+        "Different works sharing a title must remain distinguishable by author.",
+        "Ranking must be deterministic; equal-score ties preserve upstream order."
+      ]
+    },
+    {
+      "name": "multiple-recordings",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003",
+        "VAL-001"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "SR0000000002",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000003",
+                  "name": "Narrator B"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        }
+      },
+      "expected_properties": [
+        "Two distinct release IDs produce two matches with different narrators.",
+        "Full UI acceptance remains pending even when a mapper preserves both matches."
+      ]
+    },
+    {
+      "name": "full-cast",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Full Cast"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        }
+      },
+      "expected_properties": [
+        "Preserve the Full Cast narrator label; do not invent person decomposition."
+      ]
+    },
+    {
+      "name": "multiple-authors-narrators",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            },
+            {
+              "person": {
+                "id": "SP0000000004",
+                "name": "Second Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              },
+              {
+                "person": {
+                  "id": "SP0000000005",
+                  "name": "Second Synthetic Narrator"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        }
+      },
+      "expected_properties": [
+        "Preserve both author names and both narrator names in deterministic order.",
+        "Use a documented separator; do not discard a contributor."
+      ]
+    },
+    {
+      "name": "fractional-and-zero-series",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": [
+            {
+              "ordinal": "0",
+              "position": {
+                "value": "0",
+                "label": "0",
+                "kind": "point",
+                "status": "complete",
+                "sortKey": 0.0,
+                "spans": [
+                  {
+                    "start": 0.0,
+                    "end": 0.0
+                  }
+                ]
+              },
+              "series": {
+                "id": "SS0000000001",
+                "title": "Synthetic Series 0"
+              }
+            },
+            {
+              "ordinal": "0.5",
+              "position": {
+                "value": "0.5",
+                "label": "0.5",
+                "kind": "point",
+                "status": "complete",
+                "sortKey": 0.5,
+                "spans": [
+                  {
+                    "start": 0.5,
+                    "end": 0.5
+                  }
+                ]
+              },
+              "series": {
+                "id": "SS0000000002",
+                "title": "Synthetic Series 0.5"
+              }
+            }
+          ]
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        }
+      },
+      "expected_properties": [
+        "Use string series sequence values so ABS preserves zero and fractional values.",
+        "Prefer structured position.label when present; handle absent labels explicitly."
+      ]
+    },
+    {
+      "name": "missing-cover-identifiers-runtime",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": null,
+          "coverImage": null,
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [],
+            "publisher": null,
+            "language": null,
+            "releaseDate": null,
+            "duration": "2h",
+            "isbn": null,
+            "images": []
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        }
+      },
+      "expected_properties": [
+        "Omit unavailable cover/ISBN/ASIN/duration fields rather than inventing values or parsing display text.",
+        "Handle null publisher/language/date/description and missing contributor arrays explicitly."
+      ]
+    },
+    {
+      "name": "unknown-identifier",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-004"
+      ],
+      "input": {
+        "book": null,
+        "releases": [],
+        "query": {
+          "asin": "B000000000"
+        },
+        "resolver": {
+          "status": 404,
+          "errors": [
+            {
+              "status": "404",
+              "title": "not found"
+            }
+          ]
+        }
+      },
+      "expected_properties": [
+        "An unresolved exact identifier must not silently fall back to a title/edition match.",
+        "Expected adapter result is an empty matches array for a genuine not-found, distinct from upstream failure."
+      ]
+    },
+    {
+      "name": "alternate-language",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003",
+        "VAL-001"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "SR0000000002",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000006",
+                  "name": "Synthetic French Narrator"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "French"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        }
+      },
+      "expected_properties": [
+        "Preserve English and French releases separately; retain their narrator/language differences."
+      ]
+    },
+    {
+      "name": "different-isbn-editions",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-004"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "SR0000000002",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000003",
+                  "name": "Narrator B"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000019",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "isbn": "9780000000019"
+        }
+      },
+      "expected_properties": [
+        "If exact ISBN lookup becomes supported, selecting the second ISBN must preserve its release identity.",
+        "This fixture does not establish that the upstream API can resolve ISBNs."
+      ],
+      "condition": "Exact ISBN lookup is unresolved; this scenario is conditional, not an executed compatibility pass."
+    },
+    {
+      "name": "duplicate-release-id",
+      "classification": "synthetic",
+      "linked_checks": [
+        "VER-003"
+      ],
+      "input": {
+        "book": {
+          "id": "SB0000000001",
+          "title": "Invented Example",
+          "subtitle": "Synthetic subtitle",
+          "copyright": 2026,
+          "description": "Invented description for local fixture testing only.",
+          "coverImage": {
+            "url": "https://assets.example.invalid/work-cover"
+          },
+          "people": [
+            {
+              "person": {
+                "id": "SP0000000001",
+                "name": "Synthetic Author"
+              },
+              "role": {
+                "name": "Author"
+              }
+            }
+          ],
+          "genres": [
+            {
+              "id": "SG0000000001",
+              "title": "Synthetic Genre"
+            }
+          ],
+          "tags": [
+            {
+              "id": "ST0000000001",
+              "title": "Synthetic Tag"
+            }
+          ],
+          "series": []
+        },
+        "releases": [
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          },
+          {
+            "id": "SR0000000001",
+            "title": "Invented Example",
+            "subtitle": null,
+            "book": {
+              "id": "SB0000000001",
+              "title": "Invented Example"
+            },
+            "people": [
+              {
+                "person": {
+                  "id": "SP0000000002",
+                  "name": "Narrator A"
+                },
+                "role": {
+                  "name": "Narrator"
+                }
+              }
+            ],
+            "publisher": {
+              "id": "SU0000000001",
+              "name": "Synthetic Publisher"
+            },
+            "language": {
+              "name": "English"
+            },
+            "releaseDate": "2026-01-02T00:00:00Z",
+            "runtimeLengthMs": 7200000,
+            "runtimeLengthSec": 7200,
+            "duration": "2h",
+            "isbn": "9780000000002",
+            "images": [
+              {
+                "url": "https://assets.example.invalid/release-cover"
+              }
+            ],
+            "external": [
+              {
+                "id": "SE0000000001",
+                "itemId": "B000000001",
+                "category": {
+                  "title": "Audible",
+                  "allowedOnRelease": true
+                }
+              }
+            ]
+          }
+        ],
+        "query": {
+          "title": "Invented Example",
+          "author": "Synthetic Author"
+        }
+      },
+      "expected_properties": [
+        "Deduplicate identical release IDs only; retain different recordings even with the same title."
+      ]
+    }
+  ]
+}

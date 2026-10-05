@@ -1,0 +1,15 @@
+{
+  "captured_at_utc": "20261005T201310033877Z",
+  "classification": "synthetic_final_policy_race_tests",
+  "outcome": "Pass",
+  "command": "go test -race -v ./...",
+  "exit_code": 0,
+  "transcript": "policy-20261005T201310033877Z.txt",
+  "go_version": "go version go1.25.10 linux/amd64",
+  "source_sha256": {
+    "go.mod": "d97b52a42bbb81ac731b55923bf7901a423ef1dc4f53094d8fec3e25a54d1743",
+    "policy_test.go": "36a7d8e1d5da45b9eebac033449a8bfcf21784a5312ca94c426a2a8358bfd227",
+    "policy.go": "082cce8243c2629dbcd6ea91b1efe2a9358eb246a2b2e464a8ac4baecaba86ae"
+  },
+  "limitations": "Synthetic callbacks and byte fixtures; authorization endpoint separately verified live. No actual user key revoked; no full production server, rate pacer or RSS bound tested."
+}

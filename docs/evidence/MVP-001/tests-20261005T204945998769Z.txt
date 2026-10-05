@@ -1,0 +1,63 @@
+=== RUN   TestHealthTrustAndStatus
+2026/10/05 15:45:29 http: TLS handshake error from 127.0.0.1:34522: remote error: tls: bad certificate
+2026/10/05 15:45:29 http: TLS handshake error from 127.0.0.1:34552: remote error: tls: bad certificate
+--- PASS: TestHealthTrustAndStatus (0.08s)
+PASS
+ok  	abs-audiobookdb/cmd/abs-audiobookdb	(cached)
+=== RUN   TestCombinedBudget
+--- PASS: TestCombinedBudget (0.00s)
+=== RUN   TestResponsesRateAndNoRedirect
+--- PASS: TestResponsesRateAndNoRedirect (1.76s)
+=== RUN   TestPacingCancellationAndConcurrency
+--- PASS: TestPacingCancellationAndConcurrency (2.16s)
+=== RUN   TestTLSValidationAndAttemptTimeout
+2026/10/05 15:45:33 http: TLS handshake error from 127.0.0.1:58062: remote error: tls: bad certificate
+--- PASS: TestTLSValidationAndAttemptTimeout (2.13s)
+PASS
+ok  	abs-audiobookdb/internal/audiobookdb	(cached)
+=== RUN   TestBoundsExpiryIsolationGeneration
+--- PASS: TestBoundsExpiryIsolationGeneration (0.03s)
+=== RUN   TestParallelScopes
+--- PASS: TestParallelScopes (0.00s)
+PASS
+ok  	abs-audiobookdb/internal/cache	(cached)
+=== RUN   TestRuntimeConfig
+--- PASS: TestRuntimeConfig (0.00s)
+PASS
+ok  	abs-audiobookdb/internal/config	(cached)
+=== RUN   TestInputRules
+--- PASS: TestInputRules (0.00s)
+=== RUN   TestFixtureMapping
+--- PASS: TestFixtureMapping (0.00s)
+=== RUN   TestPipelineCacheAuthRoundRobinAndExact
+=== PAUSE TestPipelineCacheAuthRoundRobinAndExact
+=== RUN   TestAdmissionAndCancellation
+--- PASS: TestAdmissionAndCancellation (0.05s)
+=== RUN   TestExactIdentityFailures
+=== RUN   TestExactIdentityFailures/missing_matched_release
+=== PAUSE TestExactIdentityFailures/missing_matched_release
+=== RUN   TestExactIdentityFailures/wrong_release_identity
+=== PAUSE TestExactIdentityFailures/wrong_release_identity
+=== RUN   TestExactIdentityFailures/wrong_work_identity
+=== PAUSE TestExactIdentityFailures/wrong_work_identity
+=== RUN   TestExactIdentityFailures/wrong_asin
+=== PAUSE TestExactIdentityFailures/wrong_asin
+=== CONT  TestExactIdentityFailures/missing_matched_release
+=== CONT  TestExactIdentityFailures/wrong_work_identity
+=== CONT  TestExactIdentityFailures/wrong_release_identity
+=== CONT  TestExactIdentityFailures/wrong_asin
+--- PASS: TestExactIdentityFailures (0.00s)
+    --- PASS: TestExactIdentityFailures/missing_matched_release (0.25s)
+    --- PASS: TestExactIdentityFailures/wrong_release_identity (0.50s)
+    --- PASS: TestExactIdentityFailures/wrong_work_identity (0.50s)
+    --- PASS: TestExactIdentityFailures/wrong_asin (0.50s)
+=== CONT  TestPipelineCacheAuthRoundRobinAndExact
+--- PASS: TestPipelineCacheAuthRoundRobinAndExact (5.27s)
+PASS
+ok  	abs-audiobookdb/internal/provider	6.849s
+=== RUN   TestCredentialRulesAndSafeLogs
+--- PASS: TestCredentialRulesAndSafeLogs (0.00s)
+=== RUN   TestMethodsInputAndHeaderLimits
+--- PASS: TestMethodsInputAndHeaderLimits (0.00s)
+PASS
+ok  	abs-audiobookdb/internal/server	(cached)

@@ -1,0 +1,28 @@
+=== RUN   TestCredentialCacheAndFlightIsolation
+    lab_test.go:153: 32 interleaved requests: 2 lookup calls, 8 detail calls, peak 4; elapsed 44.982699ms
+--- PASS: TestCredentialCacheAndFlightIsolation (0.05s)
+=== RUN   TestRevocationCannotUseWarmCache
+--- PASS: TestRevocationCannotUseWarmCache (0.02s)
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/fault400
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/fault500
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/fault503
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/limited
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/malformed
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/oversized
+--- PASS: TestErrorsRetryAfterAndNoSecretErrors (1.02s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/fault400 (0.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/fault500 (0.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/fault503 (0.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/limited (1.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/malformed (0.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/oversized (0.01s)
+=== RUN   TestCancellationAndWaiterOwnership
+    lab_test.go:260: second waiter did not join
+--- FAIL: TestCancellationAndWaiterOwnership (1.10s)
+=== RUN   TestBoundedCacheAndTransientFailures
+    lab_test.go:293: Cache bounded to 4 entries; transient failures refetched
+--- PASS: TestBoundedCacheAndTransientFailures (0.13s)
+FAIL
+FAIL	abs-audiobookdb-spikes/bounds	2.325s
+FAIL

@@ -1,0 +1,11 @@
+* text=auto
+*.go text eol=lf
+*.md text eol=lf
+*.md whitespace=-blank-at-eol
+*.yaml text eol=lf
+*.yml text eol=lf
+*.py text eol=lf
+*.cjs text eol=lf
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.png binary

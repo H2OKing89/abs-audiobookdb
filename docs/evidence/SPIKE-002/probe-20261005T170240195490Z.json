@@ -1,0 +1,21 @@
+{
+  "attempted_documented_cost_cap": 0,
+  "attempted_requests": 1,
+  "authenticated_json_responses": 0,
+  "captured_at_utc": "20261005T170240195490Z",
+  "credential_source": "configured_file",
+  "limitations": "Schema summaries only. No raw payloads, credential values, private host or account data. Partial probes do not pass full spike criteria.",
+  "outcome": "Blocked",
+  "python_version": "3.14.4",
+  "records": [
+    {
+      "documented_cost_cap": 0,
+      "elapsed_ms": 0,
+      "failure": "dns_resolution_failed",
+      "label": "public_openapi",
+      "method": "GET"
+    }
+  ],
+  "spike": "SPIKE-002",
+  "stop_reason": "dns_resolution_failed"
+}

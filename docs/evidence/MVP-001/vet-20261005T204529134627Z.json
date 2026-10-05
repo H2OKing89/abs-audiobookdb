@@ -1,0 +1,28 @@
+{
+  "captured_at_utc": "20261005T204529134627Z",
+  "classification": "production_go_synthetic_checks",
+  "command": "go vet ./...",
+  "exit_code": 0,
+  "outcome": "Pass",
+  "transcript": "vet-20261005T204529134627Z.txt",
+  "source_sha256": {
+    "go.mod": "2d2cab7d25bc643eb32bbb3285e594f9d88449980b0a0d6faa46bae6a3cf3794",
+    "Dockerfile": "534ebee4b532a5a00d1dcf25c82faebb5372b66a5a7077aed53129d0794555d8",
+    "cmd/abs-audiobookdb/main.go": "cf7dec0778212cf1c3687381d780aece0b3d3e4ee0a7b11bbb8fef611bf54738",
+    "cmd/abs-audiobookdb/main_test.go": "365bad7e011b269468871b17b0b89904991aa3470d92476e7e1c6bb8a670c178",
+    "internal/audiobookdb/client_test.go": "547d35f2d9173ce58cbefe0d0fa9b990b68b4436f8288c1c71784218d4b1abbe",
+    "internal/audiobookdb/models.go": "517d96e62622782913fe3447a6182e02ff44a5c251285be38ba4a9f79b72758b",
+    "internal/audiobookdb/client.go": "451960ea9f2482b8124affbf0adf34f40114d1b0d014aaaf4828d45cb3b4891b",
+    "internal/server/server_test.go": "cdadc93e4b67597db500645efe5e4b85c2d4da6b0fa48c9a992166aaa2cba3d4",
+    "internal/server/server.go": "cf299550121b237ce41fc0eebadd08ae0c37f1c15123978be0ba3b917e22e57e",
+    "internal/provider/provider_test.go": "1c19053cb57ee5a7ea5946ad62e1427371aaef4e117842b555b72496d8e5e0e8",
+    "internal/provider/mapping.go": "32a128a19ad4514b949d240cfe66530015633220695be7610ee6da952f934ee7",
+    "internal/provider/input.go": "865b43a3e7b3e1b1386d785984b2dcf94d56a17b948521343a06264d33c1bfa4",
+    "internal/provider/provider.go": "7e924d2755648a862a48fc46e9804f6557d863b053a36b13e6d5e38218120515",
+    "internal/cache/cache_test.go": "46b4a8af70fd17babb53c72c3573be34dd5e099b9e7ef186f486f34bbc44361b",
+    "internal/cache/cache.go": "81359a473dd60b50fbbab8356b8a406236481365fd73dae6e48d4263287f7fbf",
+    "internal/config/config_test.go": "7473bdb42905f73c526492ebf9f13a5e6d9493bfbfa8f335d013afa87d5bff95",
+    "internal/config/config.go": "0a2d120e4f025d3deba1b67b36255bb7127c1d44bdc143b8b6c82c7816657d19"
+  },
+  "limitations": "Synthetic fixtures only; live API and deployed container checked separately."
+}

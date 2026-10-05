@@ -1,0 +1,1039 @@
+{
+  "attempted_documented_cost_cap": 11,
+  "attempted_requests": 8,
+  "authenticated_json_responses": 7,
+  "captured_at_utc": "20261005T170403587916Z",
+  "credential_source": "configured_file",
+  "limitations": "Schema summaries only. No raw payloads, credential values, private host or account data. Partial probes do not pass full spike criteria.",
+  "outcome": "Partial",
+  "python_version": "3.14.4",
+  "records": [
+    {
+      "documented_cost_cap": 0,
+      "elapsed_ms": 854,
+      "http_status": 200,
+      "label": "public_openapi",
+      "method": "GET",
+      "rate_header_names": [],
+      "response_bytes": 371262,
+      "schema_version": "1.0.0",
+      "sha256": "1377bdfff99a7775a7071fef7279c56a28bb7430d55ba365a8cfb8628d03fedf"
+    },
+    {
+      "documented_cost_cap": 3,
+      "elapsed_ms": 200,
+      "http_status": 200,
+      "label": "book_search",
+      "method": "POST",
+      "rate_header_names": [
+        "RateLimit-Limit",
+        "RateLimit-Remaining",
+        "RateLimit-Reset",
+        "X-RateLimit-Budget",
+        "X-RateLimit-Period"
+      ],
+      "response_bytes": 13607,
+      "response_shape": {
+        "length": 10,
+        "sample_shapes": [
+          {
+            "description": "str",
+            "genres": {
+              "length": 2,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 2,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "subtitle": "str",
+            "tags": {
+              "length": 1,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "title": "str",
+            "type": "str"
+          },
+          {
+            "description": "str",
+            "genres": {
+              "length": 3,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 1,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "tags": {
+              "length": 1,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "title": "str",
+            "type": "str"
+          },
+          {
+            "description": "str",
+            "genres": {
+              "length": 3,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 1,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "tags": {
+              "length": 3,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "title": "str",
+            "type": "str"
+          },
+          {
+            "description": "str",
+            "genres": {
+              "length": 2,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 3,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "subtitle": "str",
+            "tags": {
+              "length": 3,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "title": "str",
+            "type": "str"
+          },
+          {
+            "description": "str",
+            "genres": {
+              "length": 2,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 1,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "series": {
+              "length": 1,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "seriesWithId": {
+              "length": 1,
+              "sample_shapes": [
+                {
+                  "id": "str",
+                  "ordinal": "str",
+                  "position": {
+                    "kind": "str",
+                    "label": "str",
+                    "sortKey": "int",
+                    "spans": "list",
+                    "status": "str",
+                    "value": "str"
+                  },
+                  "title": "str"
+                }
+              ],
+              "type": "array"
+            },
+            "subtitle": "str",
+            "tags": {
+              "length": 3,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "title": "str",
+            "type": "str"
+          },
+          {
+            "description": "str",
+            "genres": {
+              "length": 3,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 1,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "tags": {
+              "length": 4,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "title": "str",
+            "type": "str"
+          },
+          {
+            "description": "str",
+            "genres": {
+              "length": 2,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 1,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "subtitle": "str",
+            "title": "str",
+            "type": "str"
+          },
+          {
+            "description": "str",
+            "genres": {
+              "length": 3,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 1,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "title": "str",
+            "type": "str"
+          },
+          {
+            "description": "str",
+            "genres": {
+              "length": 5,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "id": "str",
+            "image": {
+              "blurdata": "str",
+              "height": "int",
+              "url": "str",
+              "width": "int"
+            },
+            "originalLanguage": "str",
+            "people": {
+              "length": 1,
+              "sample_shapes": [
+                {
+                  "credit": "str",
+                  "person": {
+                    "id": "str",
+                    "name": "str"
+                  },
+                  "role": {
+                    "name": "str"
+                  }
+                }
+              ],
+              "type": "array"
+            },
+            "tags": {
+              "length": 3,
+              "sample_shapes": [
+                "str"
+              ],
+              "type": "array"
+            },
+            "title": "str",
+            "type": "str"
+          }
+        ],
+        "type": "array"
+      }
+    },
+    {
+      "documented_cost_cap": 1,
+      "elapsed_ms": 259,
+      "http_status": 200,
+      "label": "book_detail",
+      "method": "GET",
+      "rate_header_names": [
+        "RateLimit-Limit",
+        "RateLimit-Remaining",
+        "RateLimit-Reset",
+        "X-RateLimit-Budget",
+        "X-RateLimit-Period"
+      ],
+      "release_count": 1,
+      "response_bytes": 6943,
+      "response_shape": {
+        "copyright": "int",
+        "coverImage": {
+          "blurdata": "str",
+          "height": "int",
+          "id": "str",
+          "sourceUrl": "str",
+          "url": "str",
+          "width": "int"
+        },
+        "createdAt": "str",
+        "description": "str",
+        "genres": {
+          "length": 2,
+          "sample_shapes": [
+            {
+              "id": "str",
+              "title": "str"
+            }
+          ],
+          "type": "array"
+        },
+        "id": "str",
+        "images": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "blurdata": "str",
+              "height": "int",
+              "id": "str",
+              "sourceUrl": "str",
+              "url": "str",
+              "width": "int"
+            }
+          ],
+          "type": "array"
+        },
+        "originalLanguage": {
+          "name": "str"
+        },
+        "people": {
+          "length": 2,
+          "sample_shapes": [
+            {
+              "person": {
+                "id": "str",
+                "name": "str",
+                "roles": {
+                  "length": 3,
+                  "sample_shapes": [
+                    "dict"
+                  ],
+                  "type": "array"
+                }
+              },
+              "role": {
+                "name": "str"
+              }
+            },
+            {
+              "person": {
+                "id": "str",
+                "name": "str",
+                "roles": {
+                  "length": 2,
+                  "sample_shapes": [
+                    "dict"
+                  ],
+                  "type": "array"
+                }
+              },
+              "role": {
+                "name": "str"
+              }
+            }
+          ],
+          "type": "array"
+        },
+        "releases": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "duration": "str",
+              "id": "str",
+              "images": {
+                "length": 1,
+                "sample_shapes": [
+                  {
+                    "blurdata": "str",
+                    "height": "int",
+                    "id": "str",
+                    "sourceUrl": "str",
+                    "url": "str",
+                    "width": "int"
+                  }
+                ],
+                "type": "array"
+              },
+              "language": {
+                "name": "str"
+              },
+              "people": {
+                "length": 1,
+                "sample_shapes": [
+                  {
+                    "person": "dict",
+                    "role": "dict"
+                  }
+                ],
+                "type": "array"
+              },
+              "publisher": {
+                "id": "str",
+                "name": "str"
+              },
+              "releaseDate": "str",
+              "title": "str"
+            }
+          ],
+          "type": "array"
+        },
+        "subtitle": "str",
+        "tags": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "id": "str",
+              "title": "str"
+            }
+          ],
+          "type": "array"
+        },
+        "title": "str",
+        "type": "str",
+        "updatedAt": "str"
+      }
+    },
+    {
+      "documented_cost_cap": 1,
+      "elapsed_ms": 193,
+      "http_status": 200,
+      "label": "release_detail_1",
+      "method": "GET",
+      "rate_header_names": [
+        "RateLimit-Limit",
+        "RateLimit-Remaining",
+        "RateLimit-Reset",
+        "X-RateLimit-Budget",
+        "X-RateLimit-Period"
+      ],
+      "response_bytes": 3815,
+      "response_shape": {
+        "book": {
+          "id": "str",
+          "subtitle": "str",
+          "title": "str"
+        },
+        "chapterDetail": {
+          "chapters": {
+            "length": 24,
+            "sample_shapes": [
+              {
+                "lengthMs": "int",
+                "lengthString": "str",
+                "ordinal": "int",
+                "startOffsetMs": "int",
+                "title": "str"
+              }
+            ],
+            "type": "array"
+          }
+        },
+        "createdAt": "str",
+        "description": "str",
+        "disambiguation": "str",
+        "duration": "str",
+        "external": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "category": {
+                "allowedOnBook": "bool",
+                "allowedOnPerson": "bool",
+                "allowedOnPublisher": "bool",
+                "allowedOnRelease": "bool",
+                "allowedOnSeries": "bool",
+                "icon": "str",
+                "itemKind": "str",
+                "regex": "str",
+                "suffixForPerson": "str",
+                "suffixForRelease": "str",
+                "suffixForSeries": "str",
+                "title": "str",
+                "url": "str"
+              },
+              "id": "str",
+              "itemId": "str"
+            }
+          ],
+          "type": "array"
+        },
+        "id": "str",
+        "images": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "blurdata": "str",
+              "height": "int",
+              "id": "str",
+              "sourceUrl": "str",
+              "url": "str",
+              "width": "int"
+            }
+          ],
+          "type": "array"
+        },
+        "language": {
+          "name": "str"
+        },
+        "people": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "person": {
+                "id": "str",
+                "name": "str"
+              },
+              "role": {
+                "name": "str"
+              }
+            }
+          ],
+          "type": "array"
+        },
+        "publisher": {
+          "id": "str",
+          "name": "str"
+        },
+        "releaseDate": "str",
+        "runtimeLengthMs": "int",
+        "runtimeLengthSec": "int",
+        "subtitle": "str",
+        "title": "str",
+        "updatedAt": "str"
+      }
+    },
+    {
+      "documented_cost_cap": 2,
+      "elapsed_ms": 166,
+      "http_status": 200,
+      "label": "roles",
+      "method": "GET",
+      "observed_role_names": [
+        "Narrator",
+        "Author"
+      ],
+      "rate_header_names": [
+        "RateLimit-Limit",
+        "RateLimit-Remaining",
+        "RateLimit-Reset",
+        "X-RateLimit-Budget",
+        "X-RateLimit-Period"
+      ],
+      "response_bytes": 263,
+      "response_shape": {
+        "length": 5,
+        "sample_shapes": [
+          {
+            "edges": {},
+            "id": "str",
+            "name": "str"
+          }
+        ],
+        "type": "array"
+      }
+    },
+    {
+      "documented_cost_cap": 2,
+      "elapsed_ms": 172,
+      "http_status": 200,
+      "label": "external_categories",
+      "method": "GET",
+      "rate_header_names": [
+        "RateLimit-Limit",
+        "RateLimit-Remaining",
+        "RateLimit-Reset",
+        "X-RateLimit-Budget",
+        "X-RateLimit-Period"
+      ],
+      "response_bytes": 7481,
+      "response_shape": {
+        "length": 23,
+        "sample_shapes": [
+          {
+            "allowedOnBook": "bool",
+            "allowedOnPerson": "bool",
+            "allowedOnPublisher": "bool",
+            "allowedOnRelease": "bool",
+            "allowedOnSeries": "bool",
+            "displayGroup": "str",
+            "itemKind": "str",
+            "regex": "str",
+            "suffixForRelease": "str",
+            "title": "str",
+            "url": "str"
+          },
+          {
+            "allowedOnBook": "bool",
+            "allowedOnPerson": "bool",
+            "allowedOnPublisher": "bool",
+            "allowedOnRelease": "bool",
+            "allowedOnSeries": "bool",
+            "icon": "str",
+            "itemKind": "str",
+            "regex": "str",
+            "suffixForPerson": "str",
+            "suffixForRelease": "str",
+            "suffixForSeries": "str",
+            "title": "str",
+            "url": "str"
+          },
+          {
+            "allowedOnBook": "bool",
+            "allowedOnPerson": "bool",
+            "allowedOnPublisher": "bool",
+            "allowedOnRelease": "bool",
+            "allowedOnSeries": "bool",
+            "displayGroup": "str",
+            "image": "str",
+            "itemKind": "str",
+            "regex": "str",
+            "suffixForRelease": "str",
+            "suffixForSeries": "str",
+            "title": "str",
+            "url": "str"
+          },
+          {
+            "allowedOnBook": "bool",
+            "allowedOnPerson": "bool",
+            "allowedOnPublisher": "bool",
+            "allowedOnRelease": "bool",
+            "allowedOnSeries": "bool",
+            "image": "str",
+            "itemKind": "str",
+            "regex": "str",
+            "suffixForBook": "str",
+            "suffixForPerson": "str",
+            "suffixForRelease": "str",
+            "suffixForSeries": "str",
+            "title": "str",
+            "url": "str"
+          },
+          {
+            "allowedOnBook": "bool",
+            "allowedOnPerson": "bool",
+            "allowedOnPublisher": "bool",
+            "allowedOnRelease": "bool",
+            "allowedOnSeries": "bool",
+            "icon": "str",
+            "itemKind": "str",
+            "regex": "str",
+            "suffixForBook": "str",
+            "suffixForPerson": "str",
+            "suffixForRelease": "str",
+            "suffixForSeries": "str",
+            "title": "str",
+            "url": "str"
+          },
+          {
+            "allowedOnBook": "bool",
+            "allowedOnPerson": "bool",
+            "allowedOnPublisher": "bool",
+            "allowedOnRelease": "bool",
+            "allowedOnSeries": "bool",
+            "itemKind": "str",
+            "regex": "str",
+            "suffixForBook": "str",
+            "suffixForRelease": "str",
+            "title": "str",
+            "url": "str"
+          },
+          {
+            "allowedOnBook": "bool",
+            "allowedOnPerson": "bool",
+            "allowedOnPublisher": "bool",
+            "allowedOnRelease": "bool",
+            "allowedOnSeries": "bool",
+            "displayGroup": "str",
+            "itemKind": "str",
+            "regex": "str",
+            "title": "str",
+            "url": "str"
+          }
+        ],
+        "type": "array"
+      }
+    },
+    {
+      "documented_cost_cap": 1,
+      "elapsed_ms": 197,
+      "http_status": 200,
+      "label": "known_asin",
+      "method": "GET",
+      "rate_header_names": [
+        "RateLimit-Limit",
+        "RateLimit-Remaining",
+        "RateLimit-Reset",
+        "X-RateLimit-Budget",
+        "X-RateLimit-Period"
+      ],
+      "response_bytes": 9341,
+      "response_shape": {
+        "copyright": "int",
+        "coverImage": {
+          "blurdata": "str",
+          "height": "int",
+          "id": "str",
+          "sourceUrl": "str",
+          "url": "str",
+          "width": "int"
+        },
+        "createdAt": "str",
+        "description": "str",
+        "genres": {
+          "length": 3,
+          "sample_shapes": [
+            {
+              "id": "str",
+              "title": "str"
+            }
+          ],
+          "type": "array"
+        },
+        "id": "str",
+        "images": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "blurdata": "str",
+              "height": "int",
+              "id": "str",
+              "sourceUrl": "str",
+              "url": "str",
+              "width": "int"
+            }
+          ],
+          "type": "array"
+        },
+        "matchedReleaseId": "str",
+        "originalLanguage": {
+          "name": "str"
+        },
+        "people": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "person": {
+                "description": "str",
+                "genres": {
+                  "length": 4,
+                  "sample_shapes": [
+                    "dict"
+                  ],
+                  "type": "array"
+                },
+                "id": "str",
+                "name": "str",
+                "roles": {
+                  "length": 4,
+                  "sample_shapes": [
+                    "dict"
+                  ],
+                  "type": "array"
+                }
+              },
+              "role": {
+                "name": "str"
+              }
+            }
+          ],
+          "type": "array"
+        },
+        "releases": {
+          "length": 2,
+          "sample_shapes": [
+            {
+              "duration": "str",
+              "id": "str",
+              "images": {
+                "length": 1,
+                "sample_shapes": [
+                  {
+                    "blurdata": "str",
+                    "height": "int",
+                    "id": "str",
+                    "sourceUrl": "str",
+                    "url": "str",
+                    "width": "int"
+                  }
+                ],
+                "type": "array"
+              },
+              "language": {
+                "name": "str"
+              },
+              "people": {
+                "length": 1,
+                "sample_shapes": [
+                  {
+                    "person": "dict",
+                    "role": "dict"
+                  }
+                ],
+                "type": "array"
+              },
+              "publisher": {
+                "id": "str",
+                "name": "str"
+              },
+              "releaseDate": "str",
+              "title": "str"
+            }
+          ],
+          "type": "array"
+        },
+        "tags": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "id": "str",
+              "title": "str"
+            }
+          ],
+          "type": "array"
+        },
+        "title": "str",
+        "type": "str",
+        "updatedAt": "str"
+      }
+    },
+    {
+      "documented_cost_cap": 1,
+      "elapsed_ms": 168,
+      "http_status": 404,
+      "label": "unknown_asin",
+      "method": "GET",
+      "rate_header_names": [
+        "RateLimit-Limit",
+        "RateLimit-Remaining",
+        "RateLimit-Reset",
+        "X-RateLimit-Budget",
+        "X-RateLimit-Period"
+      ],
+      "response_bytes": 145,
+      "response_shape": {
+        "errors": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "detail": "str",
+              "source": {
+                "pointer": "str"
+              },
+              "status": "str",
+              "title": "str"
+            }
+          ],
+          "type": "array"
+        }
+      }
+    },
+    {
+      "label": "author_filter",
+      "not_run": "requires_observed_author_relationship"
+    }
+  ],
+  "spike": "SPIKE-002",
+  "stop_reason": null
+}

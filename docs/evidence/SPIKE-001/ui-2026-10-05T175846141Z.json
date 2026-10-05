@@ -1,0 +1,27 @@
+{
+  "captured_at_utc": "2026-10-05T17:58:49.064Z",
+  "classification": "isolated_abs_rendered_ui",
+  "outcome": "Pass",
+  "stage": "select_Narrator_B",
+  "stop_reason": null,
+  "checks": [
+    {
+      "check": "two_narrator_cards_visible",
+      "outcome": "Pass"
+    },
+    {
+      "check": "select_Narrator_A",
+      "outcome": "Pass"
+    },
+    {
+      "check": "select_Narrator_B",
+      "outcome": "Pass"
+    },
+    {
+      "check": "no_metadata_write_requests",
+      "outcome": "Pass"
+    }
+  ],
+  "item_write_request_count": 0,
+  "limitations": "Synthetic editions and disposable ABS only; no live library or upstream API. Screenshots contain only invented fixture data."
+}

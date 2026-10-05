@@ -1,0 +1,22 @@
+services:
+  adapter:
+    build: .
+    image: abs-audiobookdb:private
+    user: "99:100"
+    environment:
+      AUDIOBOOKDB_CONTACT: "${AUDIOBOOKDB_CONTACT:?Set operator contact}"
+      GOMEMLIMIT: 192MiB
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 256m
+    stop_grace_period: 10s
+    restart: unless-stopped
+    networks:
+      shared:
+        aliases: [adapter]
+
+networks:
+  shared:
+    external: true
+    name: "${DOCKER_NETWORK:?Set the network shared with ABS}"

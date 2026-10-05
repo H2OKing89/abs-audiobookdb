@@ -1,0 +1,88 @@
+{
+  "captured_at_utc": "20261005T173721481143Z",
+  "classification": "synthetic_mapping_experiment",
+  "fixture_sha256": "c6cad1001f58b3ecff377a958508e718fe400a51ae6564635a3e871fcc697d72",
+  "experiment_sha256": "3bfc00add90702106c523d193e457dcd07e185a6d830a81ba1e2fedf5787357f",
+  "outcome": "Pass",
+  "scenarios": [
+    {
+      "scenario": "known-title-author",
+      "outcome": "Pass",
+      "match_count": 1,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "ambiguous-title",
+      "outcome": "Pass",
+      "match_count": 2,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "multiple-recordings",
+      "outcome": "Pass",
+      "match_count": 2,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "full-cast",
+      "outcome": "Pass",
+      "match_count": 1,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "multiple-authors-narrators",
+      "outcome": "Pass",
+      "match_count": 1,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "fractional-and-zero-series",
+      "outcome": "Pass",
+      "match_count": 1,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "missing-cover-identifiers-runtime",
+      "outcome": "Pass",
+      "match_count": 1,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "unknown-identifier",
+      "outcome": "Pass",
+      "match_count": 0,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "alternate-language",
+      "outcome": "Pass",
+      "match_count": 2,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    },
+    {
+      "scenario": "different-isbn-editions",
+      "outcome": "Pass",
+      "match_count": 1,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": true
+    },
+    {
+      "scenario": "duplicate-release-id",
+      "outcome": "Pass",
+      "match_count": 1,
+      "deterministic_runs": 3,
+      "conditional_upstream_support": false
+    }
+  ],
+  "additional_boundaries": "Pass",
+  "limitations": "Experimental rules only. ISBN fixture selection does not establish upstream ISBN lookup. No live API or UI check. Production mapping must be revalidated after Gate C."
+}

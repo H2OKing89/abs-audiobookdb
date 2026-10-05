@@ -1,0 +1,42 @@
+{
+  "captured_at_utc": "20261005T204117343377Z",
+  "classification": "delivered_adapter_isolated_abs_and_synthetic_tls_upstream",
+  "outcome": "Incomplete",
+  "stage": "abs",
+  "stop_reason": "JSONDecodeError",
+  "checks": [
+    {
+      "check": "four_editions_cold_and_fresh_auth_warm",
+      "outcome": "Pass",
+      "cold_seconds": 1.515,
+      "warm_seconds": 0.245,
+      "cold_upstream_attempts": 7,
+      "warm_upstream_attempts": 1
+    },
+    {
+      "check": "invalid_key_and_fixture_revocation_reject_warm_cache",
+      "outcome": "Pass"
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "network",
+      "removed": true
+    }
+  ],
+  "image": "abs-audiobookdb:mvp-20261005",
+  "runner_sha256": "a8b44f0a843226fa6a58f19e8e235d21269d7e5a6b48f49b73bec3eddd5571d8",
+  "limitations": "Synthetic catalog/authentication only; separate real API and target deployment evidence. No live ABS library modified. Screenshots omitted; UI uses invented fixtures only."
+}

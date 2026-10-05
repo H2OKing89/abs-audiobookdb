@@ -1,0 +1,20 @@
+{
+  "captured_at_utc": "20261005T204318742066Z",
+  "classification": "delivered_adapter_live_read_only_audiobookdb",
+  "outcome": "Incomplete",
+  "stop_reason": "AssertionError",
+  "checks": [
+    {
+      "check": "title_cold",
+      "http_status": 502,
+      "seconds": 0.818,
+      "documented_cost_ceiling": 12,
+      "outcome": "Fail"
+    }
+  ],
+  "searches_attempted": 1,
+  "total_documented_cost_ceiling": 12,
+  "temporary_container_removed": true,
+  "runner_sha256": "2429becab5b511ffbebb65c4b96fbcdd25c5bd69f2e1a531d69e380ce9f51b38",
+  "limitations": "No production key revoked; invalid key is synthetic. Counts/latencies only; mapped catalog content stays in memory. Per-request ceilings are not measured actual API accounting."
+}

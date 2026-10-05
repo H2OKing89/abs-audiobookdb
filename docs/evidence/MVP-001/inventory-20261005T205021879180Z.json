@@ -1,0 +1,19 @@
+{
+  "captured_at_utc": "20261005T205021879180Z",
+  "classification": "post_trial_cleanup_and_image_inventory",
+  "outcome": "Pass",
+  "remaining_resource_counts": {
+    "target_containers": 0,
+    "target_images": 0,
+    "target_directories": 0,
+    "local_containers": 0,
+    "local_networks": 0,
+    "local_transfer_tags": 0
+  },
+  "retained_local_image_id": "sha256:0ecc83262330460ec0559e3d5f53f4d77e4fb644c9fa534337637da4c1022074",
+  "retained_local_tags": [
+    "abs-audiobookdb:mvp-20261005",
+    "abs-audiobookdb:private"
+  ],
+  "notes": "Target temporary transfer tag was already removed before finally cleanup, explaining its nonzero removal entry. Independent inventory confirms absence. Existing projects/networks not modified. Local build cache/images and ignored development binary retained."
+}

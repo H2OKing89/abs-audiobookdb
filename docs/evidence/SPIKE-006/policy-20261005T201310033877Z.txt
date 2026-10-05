@@ -1,0 +1,19 @@
+=== RUN   TestCombinedAttemptAndCostBudget
+    policy_test.go:35: Cold path bounded to 10 attempts and 12 documented cost units including authorization
+--- PASS: TestCombinedAttemptAndCostBudget (0.00s)
+=== RUN   TestFreshAuthBeforeEveryHitAndRevocationPurge
+--- PASS: TestFreshAuthBeforeEveryHitAndRevocationPurge (0.00s)
+=== RUN   TestCredentialPartitionAndPayloadIsolation
+--- PASS: TestCredentialPartitionAndPayloadIsolation (0.00s)
+=== RUN   TestRejectedCredentialCannotBeRepopulatedByOlderWork
+--- PASS: TestRejectedCredentialCannotBeRepopulatedByOlderWork (0.00s)
+=== RUN   TestEntryByteAndExpiryBounds
+    policy_test.go:156: Cache bounded to 64 entries / 4194304 bytes; expired payloads swept
+--- PASS: TestEntryByteAndExpiryBounds (0.03s)
+=== RUN   TestConcurrencyAdmissionAndCancellation
+    policy_test.go:203: Peak upstream concurrency 4; active request cap 8
+--- PASS: TestConcurrencyAdmissionAndCancellation (0.09s)
+=== RUN   TestDeadlineAndNoOversizeOrFailureCaching
+--- PASS: TestDeadlineAndNoOversizeOrFailureCaching (0.00s)
+PASS
+ok  	abs-audiobookdb-spikes/mvp-policy	1.146s

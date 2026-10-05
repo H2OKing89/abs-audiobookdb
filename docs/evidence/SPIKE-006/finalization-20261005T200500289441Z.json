@@ -1,0 +1,144 @@
+{
+  "captured_at_utc": "20261005T200500289441Z",
+  "classification": "live_read_only_auth_and_bounded_pipeline",
+  "python_version": "3.14.4",
+  "runner_sha256": "d27d65ad10dffccc2c7a833daf837be777da9931b2bbcdafefa9e7fecdcbe7ee",
+  "outcome": "Pass",
+  "stop_reason": null,
+  "attempted_calls": 12,
+  "documented_cost_cap": 15,
+  "checks": [
+    {
+      "check": "documented_auth_session_accepts_real_rejects_invalid_missing",
+      "outcome": "Pass"
+    },
+    {
+      "check": "isbn_category_observation",
+      "outcome": "Recorded",
+      "category_count": 23,
+      "isbn_named_category_count": 0,
+      "limitation": "Name observation and declared schema only; no guessed ISBN lookup."
+    },
+    {
+      "check": "bounded_cold_pipeline",
+      "outcome": "Pass",
+      "elapsed_ms": 1753,
+      "attempts": 7,
+      "documented_cost_cap": 9,
+      "selected_books": 2,
+      "expanded_releases": 3,
+      "match_count": 3,
+      "observed_upstream_concurrency": 1,
+      "note": "Sequential fixture run; global concurrency policy tested separately."
+    },
+    {
+      "check": "warm_reuse_after_fresh_auth",
+      "outcome": "Pass",
+      "elapsed_ms": 260,
+      "upstream_attempts": 1,
+      "documented_cost_cap": 1
+    }
+  ],
+  "requests": [
+    {
+      "check": "real_key_session",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 200,
+      "response_bytes": 251,
+      "identity_present": true,
+      "elapsed_ms": 186
+    },
+    {
+      "check": "synthetic_invalid_session",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 401,
+      "response_bytes": 123,
+      "elapsed_ms": 171
+    },
+    {
+      "check": "missing_key_session",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 401,
+      "response_bytes": 123,
+      "elapsed_ms": 179
+    },
+    {
+      "check": "external_categories",
+      "method": "GET",
+      "documented_cost_cap": 2,
+      "http_status": 200,
+      "response_bytes": 7481,
+      "elapsed_ms": 167
+    },
+    {
+      "check": "cold_session",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 200,
+      "response_bytes": 251,
+      "identity_present": true,
+      "elapsed_ms": 171
+    },
+    {
+      "check": "cold_search",
+      "method": "POST",
+      "documented_cost_cap": 3,
+      "http_status": 200,
+      "response_bytes": 13607,
+      "elapsed_ms": 177
+    },
+    {
+      "check": "cold_book_1",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 200,
+      "response_bytes": 6943,
+      "elapsed_ms": 174
+    },
+    {
+      "check": "cold_book_2",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 200,
+      "response_bytes": 9307,
+      "elapsed_ms": 196
+    },
+    {
+      "check": "cold_release_1",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 200,
+      "response_bytes": 3815,
+      "elapsed_ms": 162
+    },
+    {
+      "check": "cold_release_2",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 200,
+      "response_bytes": 1224,
+      "elapsed_ms": 163
+    },
+    {
+      "check": "cold_release_3",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 200,
+      "response_bytes": 19187,
+      "elapsed_ms": 169
+    },
+    {
+      "check": "warm_session",
+      "method": "GET",
+      "documented_cost_cap": 1,
+      "http_status": 200,
+      "response_bytes": 251,
+      "identity_present": true,
+      "elapsed_ms": 179
+    }
+  ],
+  "limitations": "One fixture run only; real key never revoked; warm reuse is transient memory, not production cache; ISBN resolver unverified."
+}

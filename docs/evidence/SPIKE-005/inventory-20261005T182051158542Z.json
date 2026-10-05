@@ -1,0 +1,20 @@
+{
+  "captured_at_utc": "20261005T182051158542Z",
+  "classification": "target_unraid_read_only_inventory_and_cleanup",
+  "connection": "user_authorized_direct_lan_ssh",
+  "unraid_version": "7.3.2",
+  "docker_version": "29.5.3",
+  "compose_version": "5.5.0",
+  "proxynet_driver": "bridge",
+  "compose_manager_projects_directory_present": true,
+  "post_trial_spike_container_count": 0,
+  "post_trial_fixture_image_count": 0,
+  "deployment_result": "deployment-20261005T181849981544Z.json",
+  "source_sha256": {
+    "main.go": "b2d0a2039fc00b6634a46439fe2e008ff54927cb132a9b753c212e67ac532483",
+    "go.mod": "bd74b67c2665dec86cf273409a8ad54554c22ccb23e7a1ea8b4a16f7ea71a059",
+    "Dockerfile": "d5ae3f462f3e04d2b5ed791dc0386e004ee9b92cc605ebbcb9174d1766371095",
+    "deploy_experiment.py": "455e0ec3bebe53f4011a92b40210cbd53fb54a35bdc06138545a0af38d6d2146"
+  },
+  "limitations": "No existing SWAG configuration or production adapter tested; no target addresses, environment values, certificate keys or container configuration dumps archived."
+}

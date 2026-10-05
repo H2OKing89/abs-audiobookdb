@@ -1,0 +1,26 @@
+=== RUN   TestCredentialCacheAndFlightIsolation
+    lab_test.go:161: 32 interleaved requests: 2 lookup calls, 8 detail calls, peak 4; elapsed 45.007042ms
+--- PASS: TestCredentialCacheAndFlightIsolation (0.05s)
+=== RUN   TestRevocationCannotUseWarmCache
+--- PASS: TestRevocationCannotUseWarmCache (0.02s)
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/fault400
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/fault500
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/fault503
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/limited
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/malformed
+=== RUN   TestErrorsRetryAfterAndNoSecretErrors/oversized
+--- PASS: TestErrorsRetryAfterAndNoSecretErrors (1.07s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/fault400 (0.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/fault500 (0.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/fault503 (0.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/limited (1.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/malformed (0.00s)
+    --- PASS: TestErrorsRetryAfterAndNoSecretErrors/oversized (0.06s)
+=== RUN   TestCancellationAndWaiterOwnership
+--- PASS: TestCancellationAndWaiterOwnership (0.13s)
+=== RUN   TestBoundedCacheAndTransientFailures
+    lab_test.go:311: Cache bounded to 4 entries; transient failures refetched
+--- PASS: TestBoundedCacheAndTransientFailures (0.14s)
+PASS
+ok  	abs-audiobookdb-spikes/bounds	2.410s

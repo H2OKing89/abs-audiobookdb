@@ -1,0 +1,64 @@
+{
+  "captured_at_utc": "20261005T180315968160Z",
+  "classification": "local_docker_fixture",
+  "outcome": "Pass",
+  "stop_reason": null,
+  "versions": {
+    "docker": "29.8.2",
+    "compose": "5.6.0"
+  },
+  "checks": [
+    {
+      "check": "http_health_identity_trust",
+      "outcome": "Pass",
+      "recorded_successes": 3
+    },
+    {
+      "check": "native_health_identity_trust",
+      "outcome": "Pass",
+      "recorded_successes": 3
+    },
+    {
+      "check": "proxy_health_identity_trust",
+      "outcome": "Pass",
+      "recorded_successes": 3
+    },
+    {
+      "check": "untrusted_tls_rejected",
+      "outcome": "Pass"
+    },
+    {
+      "check": "wrong_certificate_hostname_rejected",
+      "outcome": "Pass"
+    },
+    {
+      "check": "graceful_stop",
+      "outcome": "Pass",
+      "seconds": 0.22,
+      "all_exit_codes_zero": true
+    },
+    {
+      "check": "unreadable_key_startup_rejected",
+      "outcome": "Pass"
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "compose_project",
+      "removed": true,
+      "note": "A nonzero removal may mean the resource was never created."
+    },
+    {
+      "resource": "negative_container",
+      "removed": true,
+      "note": "A nonzero removal may mean the resource was never created."
+    },
+    {
+      "resource": "fixture_image",
+      "removed": true,
+      "note": "A nonzero removal may mean the resource was never created."
+    }
+  ],
+  "source_sha256": "b2d0a2039fc00b6634a46439fe2e008ff54927cb132a9b753c212e67ac532483",
+  "limitations": "Generic TLS reverse proxy only, not existing SWAG configuration. Local checks do not establish Unraid/proxynet compatibility."
+}

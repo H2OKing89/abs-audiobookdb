@@ -1,0 +1,102 @@
+{
+  "attempted_documented_cost_cap": 0,
+  "attempted_requests": 2,
+  "authenticated_json_responses": 1,
+  "captured_at_utc": "20261005T170401029257Z",
+  "credential_source": "configured_file",
+  "limitations": "Schema summaries only. No raw payloads, credential values, private host or account data. Partial probes do not pass full spike criteria.",
+  "outcome": "Partial",
+  "python_version": "3.14.4",
+  "records": [
+    {
+      "documented_cost_cap": 0,
+      "elapsed_ms": 9,
+      "http_status": 200,
+      "label": "abs_status",
+      "method": "GET",
+      "rate_header_names": [],
+      "response_bytes": 884,
+      "response_shape": {
+        "app": "str",
+        "authFormData": {
+          "authLoginCustomMessage": "str",
+          "authOpenIDAutoLaunch": "bool",
+          "authOpenIDButtonText": "str"
+        },
+        "authMethods": {
+          "length": 2,
+          "sample_shapes": [
+            "str"
+          ],
+          "type": "array"
+        },
+        "isInit": "bool",
+        "language": "str",
+        "serverVersion": "str"
+      }
+    },
+    {
+      "documented_cost_cap": 0,
+      "elapsed_ms": 24,
+      "http_status": 200,
+      "label": "abs_authenticated_libraries",
+      "method": "GET",
+      "rate_header_names": [],
+      "response_bytes": 869,
+      "response_shape": {
+        "libraries": {
+          "length": 1,
+          "sample_shapes": [
+            {
+              "createdAt": "int",
+              "displayOrder": "int",
+              "folders": {
+                "length": 1,
+                "sample_shapes": [
+                  {
+                    "addedAt": "int",
+                    "fullPath": "str",
+                    "id": "str",
+                    "libraryId": "str"
+                  }
+                ],
+                "type": "array"
+              },
+              "icon": "str",
+              "id": "str",
+              "lastScan": "int",
+              "lastScanVersion": "str",
+              "lastUpdate": "int",
+              "mediaType": "str",
+              "name": "str",
+              "provider": "str",
+              "settings": {
+                "audiobooksOnly": "bool",
+                "autoScanCronExpression": "null",
+                "coverAspectRatio": "int",
+                "disableWatcher": "bool",
+                "epubsAllowScriptedContent": "bool",
+                "hideSingleBookSeries": "bool",
+                "markAsFinishedPercentComplete": "null",
+                "markAsFinishedTimeRemaining": "int",
+                "metadataPrecedence": {
+                  "length": 6,
+                  "sample_shapes": [
+                    "str"
+                  ],
+                  "type": "array"
+                },
+                "onlyShowLaterBooksInContinueSeries": "bool",
+                "skipMatchingMediaWithAsin": "bool",
+                "skipMatchingMediaWithIsbn": "bool"
+              }
+            }
+          ],
+          "type": "array"
+        }
+      }
+    }
+  ],
+  "spike": "SPIKE-001",
+  "stop_reason": null
+}

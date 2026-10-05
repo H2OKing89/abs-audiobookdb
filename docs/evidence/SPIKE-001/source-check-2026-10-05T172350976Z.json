@@ -1,0 +1,20 @@
+{
+  "captured_at_utc": "2026-10-05T17:23:50.977Z",
+  "classification": "pinned_source_with_synthetic_dependencies",
+  "source_url": "https://raw.githubusercontent.com/advplyr/audiobookshelf/3563d49424d50170324de9236a24c591b6d965e9/server/providers/CustomProviderAdapter.js",
+  "source_commit": "3563d49424d50170324de9236a24c591b6d965e9",
+  "source_sha256": "46c59c6f6c8758af29492bbb5eaeab78585d1d95c1fd9634782411bb5e7dcb4e",
+  "node_version": "v24.21.0",
+  "outcome": "Pass",
+  "checks": [
+    "request_parameters_raw_authorization_default_timeout",
+    "optional_isbn_and_timeout_override",
+    "empty_auth_omits_header",
+    "two_narrator_variants_preserved_and_fields_normalized",
+    "numeric_zero_sequence_dropped_string_zero_preserved",
+    "extra_release_id_removed",
+    "successful_malformed_envelope_throws",
+    "transport_or_http_rejection_becomes_empty_results"
+  ],
+  "limitations": "Database, Axios, logging and HTML sanitizer are stubbed. No HTTP capture, measured timeout, running ABS instance or UI validation. Sentinel values are excluded from output."
+}
