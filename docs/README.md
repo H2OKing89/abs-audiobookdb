@@ -46,6 +46,7 @@ Start with the [project README](../README.md) for a short overview.
 - [Dependabot Go builder update validation](evidence/EVD-026-dependabot-go-update.md)
 - [Beginner installation guide checks](evidence/EVD-027-beginner-guides.md)
 - [Image installation, update and rollback checks](evidence/EVD-028-image-update-flow.md)
+- [Registry publication](evidence/EVD-029-registry-publication.md)
 - [Change log](CHANGELOG.md)
 - [Reusable templates](templates/README.md)
 
