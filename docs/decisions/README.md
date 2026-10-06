@@ -14,3 +14,4 @@ Copy [decision template](../templates/decision.md) to ADR-NNN-topic.md. Separate
 | [ADR-003](ADR-003-deployment-transports.md) | Direct localhost/Docker/LAN and optional native TLS | Accepted for private MVP |
 | [ADR-004](ADR-004-release-mapping.md) | Bounded release mapping; exact ISBN deferred | Accepted for private MVP |
 | [ADR-005](ADR-005-public-source.md) | Authorized public MIT source; no metadata archive | Accepted |
+| [ADR-006](ADR-006-local-ci.md) | Local CI; GitHub Actions disabled | Accepted |

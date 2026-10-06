@@ -44,7 +44,7 @@ docker compose exec adapter /adapter health
 In Audiobookshelf, add a custom **book metadata provider** with:
 
 | Setting | Value |
-|---|---|
+| --- | --- |
 | Base URL | `http://adapter:8080` |
 | Authorization | Your AudiobookDB API key; raw keys or `Bearer <key>` work |
 
@@ -79,10 +79,14 @@ and limitations. A permanent Unraid stack and live ABS provider setup remain
 operator installation steps.
 
 ```bash
-go test -race ./...
-go vet ./...
-go build -trimpath -o bin/abs-audiobookdb ./cmd/abs-audiobookdb
+./scripts/ci.sh
 ```
+
+CI runs locally; GitHub Actions is disabled. The command checks repository
+syntax and links, Go formatting and modules, race tests, vet, builds, and
+container health and shutdown. Requires Bash, Go 1.25+, a C compiler for race
+tests, Python 3, Node.js, and Docker. Use `./scripts/ci.sh --no-docker` for
+source checks only.
 
 Tests use synthetic fixtures and need no API credentials. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for checks and pull request guidance, and the

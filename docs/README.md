@@ -26,6 +26,7 @@ Start with the [project README](../README.md) for installation and
 - [Delivered MVP acceptance](evidence/EVD-017-private-mvp-acceptance.md)
 - [Public GitHub preparation](evidence/EVD-018-github-readiness.md)
 - [Publication privacy review](evidence/EVD-019-publication-history-review.md)
+- [Local CI validation](evidence/EVD-020-local-ci.md)
 - [Change log](CHANGELOG.md)
 - [Reusable templates](templates/README.md)
 

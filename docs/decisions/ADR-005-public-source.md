@@ -60,3 +60,5 @@ repository changes and checks; remote publication is a separate action.
 
 Supersedes Q-008's blanket source-publication deferral for this authorized
 scope. Historical private spike/review/evidence records stay unchanged.
+The hosted-CI execution choice is superseded by
+[ADR-006](ADR-006-local-ci.md); checks now run locally.

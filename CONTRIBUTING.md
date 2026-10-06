@@ -7,19 +7,23 @@ and invented fixtures live in `spikes/`. Current source licensing is MIT.
 
 ## Run checks
 
-Use Go 1.25 or newer and Docker for container checks:
+Run local CI before opening a pull request. Requires Bash, Git, Go 1.25 or
+newer, a C compiler for race tests, Python 3, Node.js, and Docker:
 
 ```bash
-gofmt -w cmd internal
-go test -race ./...
-go vet ./...
-go build -trimpath -o bin/abs-audiobookdb ./cmd/abs-audiobookdb
-docker build -t abs-audiobookdb:private .
+./scripts/ci.sh
 ```
 
-Go tests use synthetic local HTTPS servers and do not need API keys, ABS,
-Unraid or `.env`. GitHub CI also checks formatting, Python/JavaScript syntax,
-module consistency and the Docker health command. There is no coverage quota.
+The runner checks documentation links, Python/JavaScript syntax, JSON,
+Go formatting, module consistency, race tests, vet, the binary build, and
+Docker health/shutdown with network access disabled. It removes its temporary
+container and keeps the local build/image for reuse. It does not rewrite source
+or module files; fix formatting with `gofmt -w cmd internal` when needed.
+
+Use `./scripts/ci.sh --no-docker` when Docker is unavailable, and state that
+container checks were skipped in the PR. Go tests use synthetic local HTTPS
+servers and need no API keys, ABS, Unraid or `.env`. There is no coverage quota.
+GitHub Actions is disabled; PR validation is reported from local runs.
 
 ## Changes and pull requests
 
