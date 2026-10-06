@@ -1,6 +1,6 @@
 # Cooldown, CI and build identity verification
 
-Status: Candidate checks passed; final tagged artifacts verified by release script  
+Status: Candidate and final tagged checks passed  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
@@ -66,3 +66,10 @@ Synthetic, offline checks plus local Docker builds; zero live API traffic.
 
 Only invented credentials/contact values appear in fixtures. Release packaging
 includes adapter MIT and Go BSD notices; no environment files enter the image.
+
+## Final release verification
+
+The corrected clean tag passed full local CI and the longer synthetic load.
+[EVD-025](EVD-025-versioned-release-deployment.md) records published artifacts,
+source identity and live target checks. Earlier candidate identities above are
+historical; the accepted source is `59415d679189a7e5ae56ef997e493afc57bd9298`.

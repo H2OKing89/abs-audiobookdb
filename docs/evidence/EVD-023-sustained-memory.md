@@ -1,6 +1,6 @@
 # Sustained synthetic memory results
 
-Status: Pass for measured candidate workload  
+Status: Corrected final longer workload passed; earlier outcomes preserved  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (limits unchanged)
@@ -76,3 +76,11 @@ Local synthetic container experiment; zero live ABS/AudiobookDB traffic.
 
 Evidence contains only timing/count/memory fields, hashes and synthetic failures.
 Temporary certificates, containers and network were removed.
+
+## Corrected final release acceptance
+
+The corrected clean tagged image completed **250.631 seconds**, including 667
+searches over three warm minutes and recurring cache expiry, with all checks
+passing. Peak process RSS was **25,382,912 bytes (24.21 MiB)**, no OOM and zero
+restarts. [EVD-025](EVD-025-versioned-release-deployment.md) links the exact
+published report, clean revision and deployment verification.

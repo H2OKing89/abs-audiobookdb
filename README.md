@@ -21,8 +21,10 @@ included in results.
 ## Quick start with Docker
 
 Requires Docker Compose, an AudiobookDB API key, and an existing Docker network
-shared with Audiobookshelf. Images are built from source; no prebuilt image is
-published.
+shared with Audiobookshelf. This quick start builds from source. A tested
+linux/amd64 image archive and binary are available in the
+[v0.1.0 release](https://github.com/H2OKing89/abs-audiobookdb/releases/tag/v0.1.0);
+public registry publication is pending.
 
 For a new checkout:
 
@@ -55,9 +57,9 @@ required.
 
 See the [deployment guide](docs/deployment.md) for native TLS, configuration,
 pinned GitHub source builds, and installation through Unraid Compose Manager.
-The [Unraid guide](docs/unraid.md) covers the Docker template and Community
-Applications submission. The template is prepared; image publication and app
-listing remain separate steps. Release image archives also support `docker load`.
+The [Unraid guide](docs/unraid.md) covers the tested Docker template, installation
+from the image archive, and Community Applications submission. Public registry
+publication and app listing remain separate steps.
 
 ## Run without Docker
 

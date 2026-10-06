@@ -48,3 +48,11 @@ ADR-005 records explicit owner authorization for public GitHub source and MIT,
 superseding the earlier blanket source-publication deferral. EVD-018 records
 local checks. The runtime contract and completed private Gate C review remain
 baseline 1.0; no upstream/catalog redistribution or provider approval implied.
+
+## Versioned distribution authorization
+
+ADR-007 records owner-authorized executable/image packaging, local acceptance
+and Compose/Unraid support. EVD-025 records published v0.1.0 and actual deployment.
+Runtime baseline 1.0 is unchanged; FIFO pacing fixes starvation within existing
+limits. Public registry and CA listing are unfinished publication steps; upstream
+terms applicability and provider approval are not represented as resolved.

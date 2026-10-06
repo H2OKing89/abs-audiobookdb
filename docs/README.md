@@ -33,6 +33,7 @@ See [Unraid templates and Community Applications](unraid.md) and the
 - [Cooldown, CI and build identity](evidence/EVD-022-release-fixes.md)
 - [Sustained synthetic memory](evidence/EVD-023-sustained-memory.md)
 - [Unraid template requirements and checks](evidence/EVD-024-unraid-template.md)
+- [Published v0.1.0 and live deployment](evidence/EVD-025-versioned-release-deployment.md)
 - [Change log](CHANGELOG.md)
 - [Reusable templates](templates/README.md)
 

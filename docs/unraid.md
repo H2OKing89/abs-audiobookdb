@@ -1,6 +1,6 @@
 # Unraid installation and Community Applications
 
-Status: Template prepared; public registry publication and CA review pending  
+Status: Template runtime verified; public registry publication and CA review pending
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
@@ -16,6 +16,19 @@ The template targets `ghcr.io/h2oking89/abs-audiobookdb:0.1.0`. It becomes
 installable from that registry after the image is published and made public.
 An XML file in this repository does not mean the app is listed in Community
 Applications. Check the release notes for current image availability.
+
+The [v0.1.0 release](https://github.com/H2OKing89/abs-audiobookdb/releases/tag/v0.1.0)
+includes an installable image archive. Download its archive and `SHA256SUMS`,
+verify the archive's SHA-256 value, then load it on Unraid:
+
+```bash
+docker load -i abs-audiobookdb-0.1.0-linux-amd64-image.tar.gz
+```
+
+For this registry-free method, set the imported template's **Repository** field
+to `abs-audiobookdb:0.1.0` before Apply. The same local-image substitution was
+tested with the installed Docker Manager. The distributable XML retains its
+versioned GHCR reference for future public pulls.
 
 ## Docker template settings
 

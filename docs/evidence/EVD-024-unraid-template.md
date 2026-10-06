@@ -1,6 +1,6 @@
 # Unraid template and publication requirements
 
-Status: Installed parser validation passed; registry and CA listing pending  
+Status: Installed parser and runtime checks passed; registry/CA listing pending  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
@@ -66,3 +66,11 @@ Actual target parser with synthetic input; no upstream API calls or ABS changes.
 
 No operator contact, credentials, private host names or target addresses are
 included in the distributable template/profile. Icon is project-authored SVG.
+
+## Subsequent template runtime verification
+
+The final release image created a disposable container through the installed
+Docker Manager parser, with synthetic contact and networking disabled. Creation,
+startup, health, version, shutdown and cleanup passed.
+[EVD-025](EVD-025-versioned-release-deployment.md) records its exact revision.
+Public registry pull and CA listing remain pending.

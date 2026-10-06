@@ -25,7 +25,7 @@ Baseline: 1.0 (private MVP)
 |---|---|---|
 | RISK-001 | Conversation-derived claims replaced by scoped evidence and explicit deferrals | Managed for private scope |
 | RISK-002 | Fresh authorization, scoped caches, purge/generation tests; delivered race/live invalid-key checks passed | Verified EVD-017; actual revocation not performed |
-| RISK-003 | Fixed deadlines/cost/concurrency/bytes; single live sample below deadline | Delivered fixture/bounds passed EVD-017; sustained-load RSS unmeasured |
+| RISK-003 | Fixed deadlines/cost/concurrency/bytes; single live sample below deadline | EVD-017/025 pass for tested workloads; final 250.631s synthetic load peaks at 24.21 MiB RSS; no general latency/memory guarantee |
 | RISK-004 | No ISBN guessing, exact ASIN identity, stable release selection | Delivered exact-identity tests and live title reads pass EVD-017 |
 | RISK-005 | UID99:GID100 cert access and negative permissions pass on target fixture | Delivered target mounts passed EVD-017; each installation supplies its own certs |
 | RISK-006 | ABS masks provider failures; adapter preserves own HTTP/code/log distinction | Observed, documented compatibility limitation |
@@ -33,3 +33,8 @@ Baseline: 1.0 (private MVP)
 ## Release boundary
 
 The user now authorizes a public MIT source repository (ADR-005), superseding the earlier blanket source-publication deferral. Runtime contract baseline 1.0 is unchanged. Source licensing does not cover upstream services/data, and no metadata archive is included. Provider approval or legal compatibility is not claimed. Attribution/contact and data freshness are recorded; use only synthetic repository fixtures. The current API guide describes personal-project access while terms contain broader restrictions; the discrepancy is preserved, not silently resolved.
+
+ADR-007 additionally records owner-authorized executable/image packaging and
+Compose/Unraid support. EVD-025 records v0.1.0 publication and target checks.
+Public GHCR access and CA listing remain pending separate steps; the release
+archive supports manual image installation.

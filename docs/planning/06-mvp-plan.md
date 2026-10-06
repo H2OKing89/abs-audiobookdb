@@ -62,3 +62,12 @@ MIT (ADR-005). This supersedes earlier source-publication deferral while
 preserving runtime baseline 1.0. Credentials, account responses and catalog
 archives are excluded. EVD-018 records repository readiness; public source
 licensing does not represent upstream provider approval or data licensing.
+
+## Versioned distribution update: 2026-10-05
+
+ADR-007 records owner authorization for versioned packaging and Compose/Unraid
+support. EVD-025 records the clean v0.1.0 release, sustained synthetic RSS
+checks and persistent target update. This supersedes historical unmeasured and
+permanent-installation statements for the tested workload. Exact ISBN and
+singleflight remain deferred. GHCR/CA listing remains pending; no catalog is
+distributed and no provider approval is claimed.

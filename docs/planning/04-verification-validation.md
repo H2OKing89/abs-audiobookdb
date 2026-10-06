@@ -44,3 +44,13 @@ Private baseline 1.0 fixes limits and delivered-code acceptance in [planning 06]
 All current results, final image/source hashes, preserved failures and limits:
 [delivered acceptance](../evidence/EVD-017-private-mvp-acceptance.md).
 Sustained-load RSS and permanent installation are not claimed.
+
+## Subsequent release and installation acceptance
+
+The statement above describes EVD-017's historical scope. EVD-021 records the
+later persistent installation. [EVD-025](../evidence/EVD-025-versioned-release-deployment.md)
+records published v0.1.0, full local CI, ten Python regressions, 250.631-second
+synthetic load with 24.21 MiB peak RSS, FIFO pacing regressions and pinned live
+Unraid deployment. Earlier failures remain in EVD-023. Owner reports live ABS
+provider setup complete; latest live checks cover health/readiness connectivity,
+not a new metadata/UI test.
