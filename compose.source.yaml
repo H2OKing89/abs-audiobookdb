@@ -1,0 +1,6 @@
+# Development only: docker compose -f compose.yaml -f compose.source.yaml up -d --build
+services:
+  adapter:
+    build: .
+    image: abs-audiobookdb:development
+    pull_policy: never

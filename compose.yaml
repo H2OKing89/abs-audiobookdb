@@ -1,7 +1,7 @@
 services:
   adapter:
-    build: .
-    image: abs-audiobookdb:private
+    image: ghcr.io/h2oking89/abs-audiobookdb:latest
+    pull_policy: always
     user: "99:100"
     environment:
       AUDIOBOOKDB_CONTACT: "${AUDIOBOOKDB_CONTACT:?Set operator contact}"

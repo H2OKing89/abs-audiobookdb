@@ -1,18 +1,40 @@
-# Adapter deployment
+# Docker setup and advanced configuration
 
-Status: Verified disposable and persistent Unraid deployments  
+Status: Source deployments verified; public image publication pending  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (private MVP)
 
-## Configure ABS
+For installation through Unraid's web interface, use the
+[Unraid walkthrough](unraid.md). This page is for users comfortable with
+Docker commands and those who need additional configuration.
 
-Create a custom book metadata provider with the adapter's base URL and the
-AudiobookDB key as its Authorization value. Raw keys and `Bearer <key>` work.
-Choose this provider in the Match tab: ABS 2.37.1 initially defaults that tab
-to Google Books independently of the library's provider. Searches through the
-adapter preserve separate narrator/language recordings. ABS cards show
-narrators but omit language/subtitle; select a result to inspect language.
+## Docker Compose
+
+Requires Docker Compose, an AudiobookDB API key, and a Docker network shared
+with Audiobookshelf. This method pulls a prebuilt image. Public registry
+publication is pending; use the [source-build option](#build-directly-from-github)
+until anonymous image pulls are verified.
+
+```bash
+git clone https://github.com/H2OKing89/abs-audiobookdb.git
+cd abs-audiobookdb
+cp .env.example .env
+```
+
+Edit `.env`: set `AUDIOBOOKDB_CONTACT` to your real contact email or public
+HTTPS contact URL, and `DOCKER_NETWORK` to the network used by Audiobookshelf.
+Then start the adapter:
+
+```bash
+docker compose up -d
+docker compose exec adapter /adapter health
+```
+
+Follow [Connect Audiobookshelf](audiobookshelf.md), using `http://adapter:8080`
+as the provider URL. Put your AudiobookDB API key in the provider's
+Authorization field. The default setup is available only on the shared
+Docker network; choose a different layout below if needed.
 
 ## Choose a direct URL
 
@@ -22,18 +44,17 @@ narrators but omit language/subtitle; select a result to inspect language.
 | ABS on host | `http://127.0.0.1:8080`; add `compose.host.yaml` with default loopback binding |
 | Private LAN | `http://<host-lan-address>:8080`; add host override and set `BIND_ADDRESS` explicitly |
 
-For the tested Unraid installation, network `proxynet` already exists. Other
-installations select their own network. No reverse proxy is required.
+For host or LAN access, add `compose.host.yaml`. Set `BIND_ADDRESS` in `.env`
+to `127.0.0.1` for host-only access or your server's private LAN IP for LAN
+access. Inside an Audiobookshelf container, `localhost` refers to that
+container; use the adapter's network name or the server's LAN IP instead.
+No reverse proxy is required.
 
 ```bash
-export DOCKER_NETWORK=proxynet
-docker compose -f compose.yaml -f compose.host.yaml up -d --build
+docker compose -f compose.yaml -f compose.host.yaml up -d
 docker compose logs --tail=20 adapter
 docker compose exec adapter /adapter health
 ```
-
-This creates a persistent service when you run it. Acceptance trials used
-temporary projects and left existing Compose Manager projects untouched.
 
 ## Runtime settings
 
@@ -60,7 +81,7 @@ certificate needs the name/address ABS uses and IP SAN `127.0.0.1` for the
 built-in health check. ABS must trust its issuer too.
 
 ```bash
-DOCKER_NETWORK=proxynet TLS_DIRECTORY=/path/to/certificates docker compose -f compose.yaml -f compose.tls.yaml up -d --build
+TLS_DIRECTORY=/path/to/certificates docker compose -f compose.yaml -f compose.tls.yaml up -d
 ```
 
 Add `compose.host.yaml` for explicit host/LAN publication. Native TLS uses
@@ -83,23 +104,31 @@ available. The adapter source is MIT licensed. Upstream API access and metadata 
 
 ## Unraid Compose Manager
 
-The supplied files are standard Docker Compose. To make a persistent installation
-appear in Unraid's Compose Manager UI, create a stack using its Add New Stack
-workflow and set the project name to `abs-audiobookdb`. Put the source checkout
-in persistent storage. If the manager's Compose file lives outside that checkout,
-set its `build` context to the checkout's absolute path instead of `.`. The
-context must include Dockerfile, `go.mod`, `cmd/` and `internal/`. Copy
-`.env.example` to the stack's `.env` and set your contact and the network shared
-with ABS.
+The [Unraid walkthrough](unraid.md) supplies a complete configuration for the
+stack editor. It pulls a prebuilt image and connects through your LAN, without
+requiring a source checkout or a shared Docker network.
 
-Add the host/TLS override files only for your chosen layout. Build/start the
-stack and select autostart if desired. Standalone `docker compose up` creates
-containers but does not itself register a Compose Manager stack. The historical
-disposable acceptance trials installed no permanent stack;
-[EVD-021](evidence/EVD-021-persistent-unraid-deployment.md) records the later
-persistent installation. The owner subsequently reports live ABS provider setup
-complete. The [Unraid Docker template guide](unraid.md) covers the second
-supported packaging method.
+For a custom installation, combine the runtime settings in `compose.yaml`
+with the build settings in `compose.github.yaml` and your chosen network/port
+settings. A local source build needs an absolute checkout path if the stack
+file is stored elsewhere. Standalone `docker compose up` does not register a
+stack in Compose Manager.
+
+## Update or roll back an image install
+
+For Compose Manager installations, use the stack's **Check Updates** then
+**Update Stack**, or **Force Update** to pull again. Keep Build on Update
+turned off for image installs. From a terminal:
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+Include the same override files used at installation in both commands.
+`latest` follows tested releases; restarting alone is not an update schedule.
+To roll back, change the image tag in the configuration to an available exact
+version such as `:0.1.0`, then pull/start again. Preserve your other settings.
 
 ## Build directly from GitHub
 
@@ -119,20 +148,34 @@ override for HTTPS. Set contact and network using the same `.env` settings.
 An existing image can start without fetching GitHub; `--build` fetches source
 again when an update is requested.
 
-For Unraid Compose Manager, put the GitHub build context from
-`compose.github.yaml` into the stack's `compose.yaml`, preserve the runtime
-settings from the base Compose file, and enable **Build on Update**. The
-**Update** action then fetches the configured SHA, builds and recreates the service.
-Set `ADAPTER_SOURCE_REVISION` and `ADAPTER_VERSION` in the stack environment,
-or substitute their exact values in its build configuration. Keep
-the stack's contact, network, bindings and labels locally configured; source
-updates do not replace these operator choices. Enable **Autostart** for restart
-after Docker/array startup. Container health is available at `/health`.
+Keep the stack's contact, network and port settings when updating. A build
+pinned to a release stays on that release until you change its SHA/version;
+GitHub pushes do not update an installed adapter automatically. Retain the old
+image and configuration before changing versions. See [releases](releases.md)
+for update and rollback instructions.
 
-[Persistent deployment evidence](evidence/EVD-021-persistent-unraid-deployment.md)
-records a running Compose Manager stack built directly from GitHub. Its health
-was checked from the LAN and the actual ABS container; live provider
-configuration and a host reboot were not part of this check.
-To roll back, retain the old image and configuration before an update. Restore
-the saved image or select its verified commit SHA/version and run **Update**.
-Check `/adapter version`, health and ABS connectivity. See [releases](releases.md).
+## Build local source for development
+
+Add the explicit source override to keep builds separate from normal installs:
+
+```bash
+docker compose -f compose.yaml -f compose.source.yaml up -d --build
+```
+
+This builds the local checkout as `abs-audiobookdb:development`, with no
+registry pull. It uses the base runtime/network settings. Retain this override
+in subsequent commands for that installation.
+
+## Run without Docker
+
+Requires Go 1.25 or newer. Replace the example contact with your real contact:
+
+```bash
+export AUDIOBOOKDB_CONTACT='operator@example.com'
+export LISTEN_ADDR='127.0.0.1:8080'
+go run ./cmd/abs-audiobookdb
+curl http://127.0.0.1:8080/health
+```
+
+Use a provider URL reachable from Audiobookshelf. The Go adapter reads process
+environment variables; it does not load `.env` or development ABS credentials.

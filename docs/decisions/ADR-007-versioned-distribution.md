@@ -58,3 +58,7 @@ Owner's explicit requests for audit items 1, 2, 4, 5 and 6, 2026-10-05.
 
 Extends ADR-005's public source decision to versioned binary/image packaging.
 Preserves ADR-006's local CI requirement.
+
+Normal installation defaults and the initial latest deferral are superseded
+by [ADR-008](ADR-008-moving-image-tags.md); immutable artifacts and advanced
+source-build pins remain in effect.

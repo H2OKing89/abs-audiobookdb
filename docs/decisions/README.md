@@ -16,3 +16,4 @@ Copy [decision template](../templates/decision.md) to ADR-NNN-topic.md. Separate
 | [ADR-005](ADR-005-public-source.md) | Authorized public MIT source; no metadata archive | Accepted |
 | [ADR-006](ADR-006-local-ci.md) | Local CI; GitHub Actions disabled | Accepted |
 | [ADR-007](ADR-007-versioned-distribution.md) | Versioned local releases; Compose and Unraid template/store distribution | Accepted; registry/listing verification separate |
+| [ADR-008](ADR-008-moving-image-tags.md) | Pullable latest release channel and updates through Unraid | Accepted; public registry verification pending |
