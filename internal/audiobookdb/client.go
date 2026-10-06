@@ -62,9 +62,12 @@ type Client struct {
 	gate        chan struct{}
 	mu          sync.Mutex
 	next        time.Time
+	waiters     []*pacingWaiter
 	cooldowns   map[string]time.Time
 	now         func() time.Time
 }
+
+type pacingWaiter struct{ ready chan struct{} }
 
 func New(base, contact string, transport http.RoundTripper) *Client {
 	if transport == nil {
@@ -108,24 +111,55 @@ func (c *Client) backoff(key string, seconds int) {
 	c.cooldowns[cache.Scope(key)] = c.now().Add(time.Duration(seconds) * time.Second)
 }
 func (c *Client) pace(ctx context.Context) error {
-	for {
+	// Keep waiters in arrival order. Competing timers let fresh warm requests
+	// repeatedly take the next slot while older cold detail reads starved.
+	waiter := &pacingWaiter{ready: make(chan struct{})}
+	c.mu.Lock()
+	c.waiters = append(c.waiters, waiter)
+	if len(c.waiters) == 1 {
+		close(waiter.ready)
+	}
+	c.mu.Unlock()
+	defer func() {
 		c.mu.Lock()
-		now := c.now()
-		delay := c.next.Sub(now)
-		if delay <= 0 {
-			c.next = now.Add(time.Second / 4)
-			c.mu.Unlock()
-			return nil
+		defer c.mu.Unlock()
+		for i, queued := range c.waiters {
+			if queued != waiter {
+				continue
+			}
+			copy(c.waiters[i:], c.waiters[i+1:])
+			c.waiters[len(c.waiters)-1] = nil
+			c.waiters = c.waiters[:len(c.waiters)-1]
+			if i == 0 && len(c.waiters) > 0 {
+				close(c.waiters[0].ready)
+			}
+			break
 		}
-		c.mu.Unlock()
+	}()
+	select {
+	case <-ctx.Done():
+		return Failure(504, "deadline")
+	case <-waiter.ready:
+	}
+	c.mu.Lock()
+	delay := c.next.Sub(c.now())
+	c.mu.Unlock()
+	if delay > 0 {
 		timer := time.NewTimer(delay)
+		defer timer.Stop()
 		select {
 		case <-ctx.Done():
-			timer.Stop()
 			return Failure(504, "deadline")
 		case <-timer.C:
 		}
 	}
+	if ctx.Err() != nil {
+		return Failure(504, "deadline")
+	}
+	c.mu.Lock()
+	c.next = c.now().Add(time.Second / 4)
+	c.mu.Unlock()
+	return nil
 }
 func (c *Client) read(ctx context.Context, b *Budget, key, method, path string, body any, limit, cost int, output any) error {
 	if retry := c.cooldown(key); retry > 0 {

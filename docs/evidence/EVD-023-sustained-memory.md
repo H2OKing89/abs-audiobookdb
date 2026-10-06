@@ -38,6 +38,7 @@ upstream and both upstream/mapped size failures.
 - [Passed candidate run](MVP-001/load-20261006T005859906791Z.json)
 - [Initial port preparation failure](MVP-001/load-20261006T005450991634Z.json)
 - [Initial fixture TLS startup failure](MVP-001/load-20261006T005518891180Z.json)
+- [Longer candidate cache-expiry failure](MVP-001/load-20261006T010650076424Z.json)
 
 ## Claims supported and limitations
 
@@ -58,6 +59,14 @@ oversized upstream and mapped output returned 502. Health and cleanup passed.
 Initial runner failures are retained: internal networks disabled published
 ports, then the fixture certificate omitted loopback SAN. Both were corrected
 before the successful run; failed runs had no acceptance checks and cleaned up.
+
+The first clean candidate's longer run stopped after 244.298 seconds when a
+warm worker received 504 during recurring cache expiry. Cold checks passed;
+the sustained check did not. Its report is preserved and no image was deployed.
+Code inspection found competing pacing timers could starve older detail reads.
+FIFO pacing and head/middle cancellation regressions were added without changing
+the four-starts-per-second policy. Final tagged acceptance must rerun the longer
+workload; this earlier short pass does not replace that requirement.
 
 ## Synthetic or live classification
 

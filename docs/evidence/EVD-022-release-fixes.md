@@ -34,6 +34,8 @@ verify exact cooldown expiry and credential isolation. Python discovery runs
 all script regression tests, including the six previously omitted link tests.
 Container checks compare CLI build identity and OCI labels, then exercise
 health and graceful shutdown with networking disabled.
+Additional pacing regressions cover FIFO order and cancellation of the queue
+head or a middle waiter after the longer load uncovered starvation.
 
 ## Sanitized artifact path
 
@@ -47,6 +49,8 @@ Cooldown now honors HTTP-date Retry-After while preserving the existing 1–300
 second policy. The exact cap no longer rounds to 301 seconds. Local CI runs
 Python tests. Version and source identity do not require runtime configuration.
 No hosted CI, live quota test, API stability guarantee or registry pull is claimed.
+Pacing now preserves arrival order so new warm traffic cannot continually
+bypass an older detail read. The concurrency, deadline and rate caps are unchanged.
 
 ## Observed outcome
 

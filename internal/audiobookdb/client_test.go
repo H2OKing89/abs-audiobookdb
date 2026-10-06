@@ -220,3 +220,61 @@ func TestTLSValidationAndAttemptTimeout(t *testing.T) {
 		t.Fatal("attempt timeout")
 	}
 }
+
+func TestPacingFIFOAndCanceledWaiters(t *testing.T) {
+	for _, canceled := range []int{0, 1} {
+		t.Run([]string{"head", "middle"}[canceled], func(t *testing.T) {
+			c := New("https://fixture.invalid", "operator@example.invalid", nil)
+			defer c.Close()
+			c.next = time.Now().Add(200 * time.Millisecond)
+			ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+			defer cancel()
+			results := make(chan int, 3)
+			waitFor := func(size int) {
+				t.Helper()
+				deadline := time.Now().Add(time.Second)
+				for time.Now().Before(deadline) {
+					c.mu.Lock()
+					n := len(c.waiters)
+					c.mu.Unlock()
+					if n == size {
+						return
+					}
+					time.Sleep(time.Millisecond)
+				}
+				t.Fatalf("pacing queue did not reach size %d", size)
+			}
+			var cancels []context.CancelFunc
+			for i := 0; i < 2; i++ {
+				child, stop := context.WithCancel(ctx)
+				defer stop()
+				cancels = append(cancels, stop)
+				go func(index int) {
+					if c.pace(child) == nil {
+						results <- index
+					}
+				}(i)
+				waitFor(i + 1)
+			}
+			cancels[canceled]()
+			waitFor(1)
+			go func() {
+				if c.pace(ctx) == nil {
+					results <- 2
+				}
+			}()
+			waitFor(2)
+			for _, want := range []int{1 - canceled, 2} {
+				select {
+				case got := <-results:
+					if got != want {
+						t.Fatalf("new waiter bypassed older work: got %d, want %d", got, want)
+					}
+				case <-ctx.Done():
+					t.Fatal("pacing queue failed to drain after cancellation")
+				}
+			}
+			waitFor(0)
+		})
+	}
+}

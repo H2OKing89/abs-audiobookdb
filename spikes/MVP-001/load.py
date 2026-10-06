@@ -181,11 +181,23 @@ def main():
         stage = 'complete'
         outcome = 'Pass'
     except Exception as error:
+        outcome = 'Fail' if isinstance(error, AssertionError) else 'Incomplete'
         reason = type(error).__name__ + ': ' + str(error)
     finally:
         stop.set()
         if sampler:
             sampler.join(timeout=2)
+        if samples:
+            memory = {'samples': len(samples),
+                      'peak_process_rss_bytes': max(s.get('VmHWM', 0) for s in samples),
+                      'last_process_rss_bytes': samples[-1].get('VmRSS'),
+                      'limit_bytes': 256 * 1024 * 1024}
+            try:
+                state = json.loads(command('docker', 'inspect', adapter))[0]
+                memory.update(oom_killed=state['State']['OOMKilled'], restarts=state['RestartCount'])
+            except Exception:
+                memory['state_sampled'] = False
+            metadata['memory'] = memory
         for kind, resource in reversed(created):
             result = subprocess.run(['docker', 'rm', '-f', resource] if kind == 'container'
                                     else ['docker', 'network', 'rm', resource], capture_output=True, timeout=30)

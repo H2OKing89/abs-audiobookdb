@@ -1,0 +1,44 @@
+{
+  "captured_at_utc": "20261006T010650076424Z",
+  "classification": "synthetic_isolated_container_load",
+  "outcome": "Incomplete",
+  "stage": "sustained-warm-searches",
+  "reason": "AssertionError: Expected 200, received 504",
+  "duration_seconds": 244.298,
+  "image_id": "sha256:605ce4b1a8257af57852bf871a1ed263aa5d8a942a8158011a93e12c595d96c9",
+  "build": {
+    "version": "0.1.0",
+    "revision": "58e07e033f9608b570e5bdd3e68b1f83397029a9",
+    "dirty": "false"
+  },
+  "checks": [
+    {
+      "check": "24_large_cold_searches_at_three_concurrent",
+      "outcome": "Pass",
+      "max_seconds": 7.566,
+      "matches_each": 6,
+      "detail_response_bytes": 921600
+    },
+    {
+      "check": "large_entry_cache_turnover",
+      "outcome": "Pass",
+      "refetch_calls": 10
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "network",
+      "removed": true
+    }
+  ],
+  "runner_sha256": "ab87aa6a399e12f736b03c5e7670c17e17d7c207a1c0b711f1615770123585fc",
+  "limitations": "Local synthetic workload only; process RSS is not total cgroup memory. No live API, ABS or Unraid workload; no latency or production memory guarantee."
+}
