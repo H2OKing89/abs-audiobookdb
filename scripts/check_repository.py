@@ -11,13 +11,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def unraid_template_issues(template, version):
+def unraid_template_issues(template):
     """Reject install defaults that break the adapter's deployment contract."""
     issues = []
     if template.tag != 'Container' or template.get('version') != '2':
         issues.append('expected Unraid Container version 2')
-    if template.findtext('Repository') != f'ghcr.io/h2oking89/abs-audiobookdb:{version}':
-        issues.append('image must pin the current source version')
+    if template.findtext('Repository') != 'ghcr.io/h2oking89/abs-audiobookdb:latest':
+        issues.append('default image must use the project latest release channel')
     if template.findtext('Privileged') != 'false':
         issues.append('privileged mode must be disabled')
     required = {'--user=99:100', '--read-only', '--memory=256m', '--cap-drop=ALL',
@@ -89,9 +89,8 @@ def main():
         elif path.suffix in ('.xml', '.svg'):
             tree = ET.parse(path).getroot()
             if path.parent == ROOT / 'templates':
-                version = (ROOT / 'internal/buildinfo/VERSION').read_text().strip()
                 issues.extend(str(path.relative_to(ROOT)) + ': ' + issue
-                              for issue in unraid_template_issues(tree, version))
+                              for issue in unraid_template_issues(tree))
             elif path.name == 'ca_profile.xml':
                 if tree.tag != 'CommunityApplications' or not (tree.findtext('Profile') or '').strip():
                     issues.append('ca_profile.xml: repository profile is required')

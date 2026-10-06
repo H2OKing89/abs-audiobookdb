@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
   <Name>abs-audiobookdb</Name>
-  <Repository>ghcr.io/h2oking89/abs-audiobookdb:0.1.0</Repository>
+  <Repository>ghcr.io/h2oking89/abs-audiobookdb:latest</Repository>
   <Registry>https://ghcr.io/h2oking89/abs-audiobookdb</Registry>
   <Network>bridge</Network>
   <MyIP/>

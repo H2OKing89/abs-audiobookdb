@@ -69,5 +69,6 @@ ADR-007 records owner authorization for versioned packaging and Compose/Unraid
 support. EVD-025 records the clean v0.1.0 release, sustained synthetic RSS
 checks and persistent target update. This supersedes historical unmeasured and
 permanent-installation statements for the tested workload. Exact ISBN and
-singleflight remain deferred. GHCR/CA listing remains pending; no catalog is
-distributed and no provider approval is claimed.
+singleflight remain deferred. Public GHCR exact/latest images are verified
+(EVD-029); CA listing remains pending. No catalog is distributed and no
+provider approval is claimed.

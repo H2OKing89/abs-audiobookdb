@@ -54,5 +54,6 @@ baseline 1.0; no upstream/catalog redistribution or provider approval implied.
 ADR-007 records owner-authorized executable/image packaging, local acceptance
 and Compose/Unraid support. EVD-025 records published v0.1.0 and actual deployment.
 Runtime baseline 1.0 is unchanged; FIFO pacing fixes starvation within existing
-limits. Public registry and CA listing are unfinished publication steps; upstream
-terms applicability and provider approval are not represented as resolved.
+limits. Public registry verification passed in EVD-029; CA listing remains
+an unfinished submission/review step. Upstream terms applicability and provider
+approval are not represented as resolved.

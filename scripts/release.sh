@@ -41,4 +41,5 @@ docker image inspect --format '{{.Id}}' "$image" > "$destination/image-id.txt"
   sha256sum LICENSE Go-LICENSE abs-audiobookdb-linux-amd64 *.tar.gz image-id.txt version.json load.json > SHA256SUMS
 )
 printf 'Validated local release artifacts: %s\n' "$destination"
-printf 'Registry publication and GitHub release upload are separate explicit commands; see docs/releases.md.\n'
+printf 'Publish this verified image with: python3 scripts/publish_image.py %s\n' "$version"
+printf 'GitHub release upload remains a separate command; see docs/releases.md.\n'

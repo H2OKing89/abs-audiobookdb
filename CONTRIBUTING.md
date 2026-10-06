@@ -28,6 +28,13 @@ Dependabot's weekly Docker update schedule remains enabled. Run local checks
 against an update before merging; historical billing-related check failures
 do not establish whether the proposed dependency update passes.
 
+## Local development container
+
+Normal installations pull the public release image. To build this checkout,
+add `compose.source.yaml` to the base Compose file and run with `--build`.
+For a pinned GitHub source build, use `compose.github.yaml` instead. Both
+source overrides disable registry pulls; keep the override in later commands.
+
 ## Changes and pull requests
 
 Use concise, imperative commits. Explain the behavior changed, reproduction

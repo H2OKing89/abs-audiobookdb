@@ -5,10 +5,19 @@ Updated: 2026-10-05
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
 
-Start with the [project README](../README.md) for installation and
-[deployment](deployment.md) for configuration and Unraid Compose Manager.
-See [Unraid templates and Community Applications](unraid.md) and the
-[local release procedure](releases.md) for packaged distribution.
+Start with the [project README](../README.md) for a short overview.
+
+## Installation and use
+
+- [Install on Unraid using your browser](unraid.md)
+- [Connect Audiobookshelf and try a book](audiobookshelf.md)
+- [Docker setup and advanced configuration](deployment.md)
+
+## Development and publication
+
+- [Contributor guide and local checks](../CONTRIBUTING.md)
+- [Unraid Docker template and Apps publication](community-applications.md)
+- [Local release procedure](releases.md)
 
 ## Design and planning
 
@@ -35,6 +44,9 @@ See [Unraid templates and Community Applications](unraid.md) and the
 - [Unraid template requirements and checks](evidence/EVD-024-unraid-template.md)
 - [Published v0.1.0 and live deployment](evidence/EVD-025-versioned-release-deployment.md)
 - [Dependabot Go builder update validation](evidence/EVD-026-dependabot-go-update.md)
+- [Beginner installation guide checks](evidence/EVD-027-beginner-guides.md)
+- [Image installation, update and rollback checks](evidence/EVD-028-image-update-flow.md)
+- [Registry publication](evidence/EVD-029-registry-publication.md)
 - [Change log](CHANGELOG.md)
 - [Reusable templates](templates/README.md)
 
