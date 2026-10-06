@@ -24,6 +24,9 @@ Use `./scripts/ci.sh --no-docker` when Docker is unavailable, and state that
 container checks were skipped in the PR. Go tests use synthetic local HTTPS
 servers and need no API keys, ABS, Unraid or `.env`. There is no coverage quota.
 GitHub Actions is disabled; PR validation is reported from local runs.
+Dependabot's weekly Docker update schedule remains enabled. Run local checks
+against an update before merging; historical billing-related check failures
+do not establish whether the proposed dependency update passes.
 
 ## Changes and pull requests
 

@@ -96,6 +96,9 @@ health and shutdown. Requires Bash, Go 1.25+, a C compiler for race
 tests, Python 3, Node.js, and Docker. Use `./scripts/ci.sh --no-docker` for
 source checks only.
 
+Dependabot opens weekly Docker dependency update PRs. Validate those updates
+locally before merging; dependency update jobs are separate from project CI.
+
 Tests use synthetic fixtures and need no API credentials. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for checks and pull request guidance, and the
 [documentation index](docs/README.md) for architecture, decisions, and evidence.

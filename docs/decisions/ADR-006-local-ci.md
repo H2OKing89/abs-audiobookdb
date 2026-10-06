@@ -26,7 +26,8 @@ the same checks without provisioning a persistent runner or deployment.
 Use `./scripts/ci.sh` for repository syntax/links, formatting, module consistency,
 race tests, vet, binary build and container health/shutdown. Docker is included
 by default; `--no-docker` explicitly reports skipped container checks.
-Disable GitHub Actions and remove the hosted workflow and Dependabot schedules.
+Disable GitHub Actions and remove the hosted CI workflow. Keep Dependabot's
+weekly Docker update schedule; validate dependency PRs locally before merging.
 Keep GitHub issue and PR templates. Contributors report local outcomes in PRs.
 
 ## Evidence and source versions
@@ -34,12 +35,20 @@ Keep GitHub issue and PR templates. Contributors report local outcomes in PRs.
 [EVD-020](../evidence/EVD-020-local-ci.md) records local runner execution and
 GitHub Actions settings verification. Earlier hosted-CI preparation remains
 historical evidence.
+The owner subsequently clarified that Dependabot should remain enabled while
+CI stays disabled. This supersedes the earlier schedule-removal choice recorded
+in EVD-020. Read-back of repository Actions permissions remains `enabled: false`;
+PR #1's earlier CI annotation reports that the job never started due to billing.
 
 ## Consequences and risks
 
 Contributors need local tooling. GitHub supplies no automated check result;
 reviewers must read the reported validation. No API credentials or live service
 access are required. The script removes only its temporary test container.
+GitHub may run its separate Dependabot update jobs despite repository Actions
+disablement, as documented in its
+[Dependabot runner guide](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-on-actions).
+These jobs generate update PRs and do not run the removed project CI workflow.
 
 ## Affected documents and tests
 
