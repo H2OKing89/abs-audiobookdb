@@ -1,0 +1,27 @@
+{
+  "captured_at_utc": "20261006T005450991634Z",
+  "classification": "synthetic_isolated_container_load",
+  "outcome": "Incomplete",
+  "stage": "prepare",
+  "reason": "CalledProcessError: Command '('docker', 'port', 'abs-load-4a116b02-upstream', '8443/tcp')' returned non-zero exit status 1.",
+  "duration_seconds": 0.56,
+  "image_id": "sha256:0cca7660c03670e68b41dcb416a0d71aa4828f2a902e299e8c8a5aa52f3b2706",
+  "build": {
+    "version": "0.1.0",
+    "revision": "59600e06d717aa1a08801bd94bec3f8702b1dde0",
+    "dirty": "true"
+  },
+  "checks": [],
+  "cleanup": [
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "network",
+      "removed": true
+    }
+  ],
+  "runner_sha256": "7d195d64a97954171876c0719d13a14dda9b59b16a6b58394883a957380f2ea2",
+  "limitations": "Local synthetic workload only; process RSS is not total cgroup memory. No live API, ABS or Unraid workload; no latency or production memory guarantee."
+}

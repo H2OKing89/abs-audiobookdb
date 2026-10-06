@@ -13,6 +13,7 @@ import (
 	"sync"
 	"time"
 
+	"abs-audiobookdb/internal/buildinfo"
 	"abs-audiobookdb/internal/cache"
 )
 
@@ -74,7 +75,7 @@ func New(base, contact string, transport http.RoundTripper) *Client {
 		t.ResponseHeaderTimeout = CallTimeout
 		transport = t
 	}
-	return &Client{base: strings.TrimRight(base, "/"), agent: "abs-audiobookdb/0.1 (" + contact + ")", http: &http.Client{Transport: transport, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}, gate: make(chan struct{}, 4), cooldowns: map[string]time.Time{}, now: time.Now}
+	return &Client{base: strings.TrimRight(base, "/"), agent: "abs-audiobookdb/" + buildinfo.Current().Version + " (" + contact + ")", http: &http.Client{Transport: transport, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}, gate: make(chan struct{}, 4), cooldowns: map[string]time.Time{}, now: time.Now}
 }
 func (c *Client) Close() { c.http.CloseIdleConnections() }
 func (c *Client) cooldown(key string) int {
@@ -87,7 +88,7 @@ func (c *Client) cooldown(key string) int {
 		}
 	}
 	if t, ok := c.cooldowns[cache.Scope(key)]; ok {
-		return int(t.Sub(now).Seconds()) + 1
+		return int((t.Sub(now) + time.Second - 1) / time.Second)
 	}
 	return 0
 }
@@ -180,13 +181,7 @@ func (c *Client) read(ctx context.Context, b *Budget, key, method, path string, 
 		return Failure(401, "unauthorized")
 	}
 	if resp.StatusCode == 429 {
-		seconds, err := strconv.Atoi(resp.Header.Get("Retry-After"))
-		if err != nil || seconds < 1 {
-			seconds = 1
-		}
-		if seconds > 300 {
-			seconds = 300
-		}
+		seconds := retryAfter(resp.Header.Get("Retry-After"), c.now())
 		c.backoff(key, seconds)
 		return &Fault{503, "rate_limited", seconds}
 	}
@@ -210,6 +205,31 @@ func (c *Client) read(ctx context.Context, b *Budget, key, method, path string, 
 		return Failure(502, "upstream_schema")
 	}
 	return nil
+}
+
+// Retry-After accepts delay seconds and HTTP dates. Keep the existing bounded
+// cooldown policy and round future dates upward so callers do not retry early.
+func retryAfter(value string, now time.Time) int {
+	value = strings.TrimSpace(value)
+	if value != "" && strings.IndexFunc(value, func(r rune) bool { return r < '0' || r > '9' }) < 0 {
+		n, err := strconv.ParseUint(value, 10, 64)
+		if err != nil || n > 300 {
+			return 300
+		}
+		if n == 0 {
+			return 1
+		}
+		return int(n)
+	}
+	date, err := http.ParseTime(value)
+	if err != nil || !date.After(now) {
+		return 1
+	}
+	delay := date.Sub(now)
+	if delay >= 300*time.Second {
+		return 300
+	}
+	return int((delay + time.Second - 1) / time.Second)
 }
 
 var validID = regexp.MustCompile(`^[A-Za-z0-9_-]{1,128}$`)

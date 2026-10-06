@@ -1,0 +1,11 @@
+# Build a pinned public source release. Set ADAPTER_SOURCE_REVISION to its full SHA.
+services:
+  adapter:
+    build:
+      context: https://github.com/H2OKing89/abs-audiobookdb.git#${ADAPTER_SOURCE_REVISION:?Set the full release commit SHA}
+      args:
+        VERSION: "${ADAPTER_VERSION:-0.1.0}"
+        SOURCE_REVISION: "${ADAPTER_SOURCE_REVISION:?Set the full release commit SHA}"
+        BUILD_DIRTY: "false"
+    image: abs-audiobookdb:${ADAPTER_VERSION:-0.1.0}
+    pull_policy: never

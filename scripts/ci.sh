@@ -54,6 +54,8 @@ trap 'exit 143' TERM
 
 printf 'Checking repository syntax and documentation links...\n'
 python3 scripts/check_repository.py
+printf 'Running Python regression tests...\n'
+python3 -m unittest discover -s scripts -p 'test_*.py' -v
 git diff --check
 git diff --cached --check
 
@@ -81,7 +83,18 @@ fi
 
 printf 'Building container...\n'
 image='abs-audiobookdb:local-ci'
-docker build -t "$image" .
+revision=$(git rev-parse HEAD)
+dirty=false
+if [[ -n "$(git status --porcelain)" ]]; then dirty=true; fi
+version=$(cat internal/buildinfo/VERSION)
+docker build --build-arg VERSION="$version" --build-arg SOURCE_REVISION="$revision" \
+  --build-arg BUILD_DIRTY="$dirty" -t "$image" .
+printf 'Checking image version and source revision...\n'
+docker run --rm --network none "$image" version | python3 -c \
+  'import json,sys; i=json.load(sys.stdin); assert (i["version"],i["revision"],i["dirty"])==tuple(sys.argv[1:])' \
+  "$version" "$revision" "$dirty"
+[[ "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.version"}}' "$image")" == "$version" ]]
+[[ "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.revision"}}' "$image")" == "$revision" ]]
 printf 'Checking container health and graceful shutdown without network access...\n'
 container_id=$(docker run -d --network none --read-only --memory 256m \
   --cap-drop ALL --security-opt no-new-privileges \

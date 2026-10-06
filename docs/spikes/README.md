@@ -16,6 +16,7 @@ Spikes begin after Gate A. Use temporary experiments under spikes/SPIKE-NNN/ and
 | [SPIKE-005](SPIKE-005-deployment.md) | Does deployment work on Unraid? | 99:100 + proxynet + direct HTTP/native TLS including health | Pass: disposable target trial and cleanup; proxy checks are historical extras |
 
 | [SPIKE-006](SPIKE-006-mvp-finalization.md) | Can verified authorization and bounded reads close private MVP planning? | Live session/key rejection, cold/warm cost and final policy tests | Pass: EVD-015/016; exact ISBN/public distribution explicitly deferred |
+| [SPIKE-007](SPIKE-007-sustained-memory.md) | Does the 256 MiB container survive sustained large synthetic searches? | Cache turnover, three concurrent searches, warm duration, slow/oversized failures and RSS | Execution evidence recorded separately; no live API traffic |
 
 For every spike, complete the procedure and numeric criteria before execution. A failed spike is useful evidence; document it and revise the plan.
 

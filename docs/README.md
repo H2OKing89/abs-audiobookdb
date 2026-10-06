@@ -7,6 +7,8 @@ Baseline: 1.0 (runtime contract unchanged)
 
 Start with the [project README](../README.md) for installation and
 [deployment](deployment.md) for configuration and Unraid Compose Manager.
+See [Unraid templates and Community Applications](unraid.md) and the
+[local release procedure](releases.md) for packaged distribution.
 
 ## Design and planning
 
@@ -27,6 +29,10 @@ Start with the [project README](../README.md) for installation and
 - [Public GitHub preparation](evidence/EVD-018-github-readiness.md)
 - [Publication privacy review](evidence/EVD-019-publication-history-review.md)
 - [Local CI validation](evidence/EVD-020-local-ci.md)
+- [Persistent Unraid deployment](evidence/EVD-021-persistent-unraid-deployment.md)
+- [Cooldown, CI and build identity](evidence/EVD-022-release-fixes.md)
+- [Sustained synthetic memory](evidence/EVD-023-sustained-memory.md)
+- [Unraid template requirements and checks](evidence/EVD-024-unraid-template.md)
 - [Change log](CHANGELOG.md)
 - [Reusable templates](templates/README.md)
 

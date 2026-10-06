@@ -39,6 +39,58 @@ func TestCombinedBudget(t *testing.T) {
 		t.Fatal("aggregate byte cap")
 	}
 }
+
+func TestRetryAfterFormatsAndScopedCooldown(t *testing.T) {
+	now := time.Date(2026, 10, 5, 12, 0, 0, 200000000, time.UTC)
+	date := now.Truncate(time.Second).Add(120 * time.Second)
+	for _, tc := range []struct {
+		name, header string
+		seconds      int
+	}{
+		{"seconds", "120", 120},
+		{"HTTP date", date.Format(http.TimeFormat), 120},
+		{"obsolete RFC850 date", date.Format(time.RFC850), 120},
+		{"obsolete ANSI date", date.Format(time.ANSIC), 120},
+		{"past date", now.Add(-time.Minute).Format(http.TimeFormat), 1},
+		{"long date", now.Add(time.Hour).Format(http.TimeFormat), 300},
+		{"bounded integer", "9999", 300},
+		{"integer overflow", "9999999999999999999999999999999999999", 300},
+		{"zero", "0", 1},
+		{"empty", "", 1},
+		{"negative", "-20", 1},
+		{"signed", "+20", 1},
+		{"malformed", "tomorrow", 1},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			var calls atomic.Int32
+			up := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				calls.Add(1)
+				w.Header().Set("Retry-After", tc.header)
+				w.WriteHeader(429)
+			}))
+			defer up.Close()
+			c := New(up.URL, "operator@example.invalid", up.Client().Transport)
+			defer c.Close()
+			c.now = func() time.Time { return now }
+			f := AsFault(c.Authorize(context.Background(), &Budget{}, "synthetic"))
+			if f.Status != 503 || f.RetryAfter != tc.seconds {
+				t.Fatalf("429 translated to status %d / retry %d, want 503 / %d", f.Status, f.RetryAfter, tc.seconds)
+			}
+			f = AsFault(c.Authorize(context.Background(), &Budget{}, "synthetic"))
+			if f.Status != 503 || f.RetryAfter != tc.seconds || calls.Load() != 1 {
+				t.Fatal("cooldown was bypassed or rounded beyond its bound")
+			}
+			if c.cooldown("other") != 0 {
+				t.Fatal("cooldown leaked across credentials")
+			}
+			nowAtExpiry := now.Add(time.Duration(tc.seconds) * time.Second)
+			c.now = func() time.Time { return nowAtExpiry }
+			if c.cooldown("synthetic") != 0 {
+				t.Fatal("cooldown did not expire at its boundary")
+			}
+		})
+	}
+}
 func TestResponsesRateAndNoRedirect(t *testing.T) {
 	var calls atomic.Int32
 	up := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

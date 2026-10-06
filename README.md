@@ -3,7 +3,7 @@
 A read-only metadata adapter that lets [Audiobookshelf](https://www.audiobookshelf.org/)
 search [AudiobookDB](https://audiobookdb.org/) through a custom book metadata provider.
 Written in Go, with Docker deployment for localhost, a shared Docker network, or a
-private LAN.
+private LAN. The first versioned development release is **v0.1.0**.
 
 ## Features
 
@@ -27,7 +27,7 @@ published.
 For a new checkout:
 
 ```bash
-git clone https://github.com/H2OKing89/abs-audiobookdb.git
+git clone --branch v0.1.0 https://github.com/H2OKing89/abs-audiobookdb.git
 cd abs-audiobookdb
 cp .env.example .env
 ```
@@ -54,7 +54,10 @@ service only on the shared Docker network. For host or LAN access, add
 required.
 
 See the [deployment guide](docs/deployment.md) for native TLS, configuration,
-and installation through Unraid Compose Manager.
+pinned GitHub source builds, and installation through Unraid Compose Manager.
+The [Unraid guide](docs/unraid.md) covers the Docker template and Community
+Applications submission. The template is prepared; image publication and app
+listing remain separate steps. Release image archives also support `docker load`.
 
 ## Run without Docker
 
@@ -75,22 +78,26 @@ Use a provider URL reachable from Audiobookshelf. Inside an ABS container,
 The MVP passed Go race tests, live upstream read checks, isolated Audiobookshelf
 2.37.1 UI checks, and disposable deployment tests on Unraid 7.3.2. See the
 [acceptance record](docs/evidence/EVD-017-private-mvp-acceptance.md) for results
-and limitations. A permanent Unraid stack and live ABS provider setup remain
-operator installation steps.
+and limitations. A permanent Compose Manager installation is running on the
+owner's actual Unraid host; the owner reports live ABS provider setup complete.
+Versioned release checks and sustained synthetic-load evidence are linked from
+the [documentation index](docs/README.md).
 
 ```bash
 ./scripts/ci.sh
 ```
 
 CI runs locally; GitHub Actions is disabled. The command checks repository
-syntax and links, Go formatting and modules, race tests, vet, builds, and
-container health and shutdown. Requires Bash, Go 1.25+, a C compiler for race
+syntax and links, Python regression tests, Unraid XML defaults, Go formatting
+and modules, race tests, vet, builds, image version metadata, and container
+health and shutdown. Requires Bash, Go 1.25+, a C compiler for race
 tests, Python 3, Node.js, and Docker. Use `./scripts/ci.sh --no-docker` for
 source checks only.
 
 Tests use synthetic fixtures and need no API credentials. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for checks and pull request guidance, and the
 [documentation index](docs/README.md) for architecture, decisions, and evidence.
+See the [release procedure](docs/releases.md) for tagged local builds and rollback.
 Keep credentials in ignored local files. Development ABS access settings are
 used only by spike tooling; the Go adapter does not load `.env`.
 

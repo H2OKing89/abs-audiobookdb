@@ -38,6 +38,11 @@ occurs in tests/integration/deployment fixtures.
 Store sanitized actual results under `docs/evidence/MVP-001/`; EVD-017
 records delivered implementation outcomes and retained failures.
 
+`python3 spikes/MVP-001/load.py --image abs-audiobookdb:local-ci` reproduces
+[SPIKE-007](../../docs/spikes/SPIKE-007-sustained-memory.md): large-response/cache
+turnover, three-worker sustained searches, RSS sampling and failure bounds.
+It uses an isolated synthetic upstream and no live API credentials.
+
 The first live search exposed flattened search genres/tags/series being decoded
 as detail objects; a distinct search-hit DTO and regression fixture corrected
 it. The initial auth+search used four documented units (inferred from the

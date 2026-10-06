@@ -15,3 +15,4 @@ Copy [decision template](../templates/decision.md) to ADR-NNN-topic.md. Separate
 | [ADR-004](ADR-004-release-mapping.md) | Bounded release mapping; exact ISBN deferred | Accepted for private MVP |
 | [ADR-005](ADR-005-public-source.md) | Authorized public MIT source; no metadata archive | Accepted |
 | [ADR-006](ADR-006-local-ci.md) | Local CI; GitHub Actions disabled | Accepted |
+| [ADR-007](ADR-007-versioned-distribution.md) | Versioned local releases; Compose and Unraid template/store distribution | Accepted; registry/listing verification separate |

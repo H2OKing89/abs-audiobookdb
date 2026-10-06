@@ -1,0 +1,31 @@
+{
+  "captured_at_utc": "20261006T005518891180Z",
+  "classification": "synthetic_isolated_container_load",
+  "outcome": "Incomplete",
+  "stage": "startup",
+  "reason": "RuntimeError: Fixture startup timeout",
+  "duration_seconds": 13.479,
+  "image_id": "sha256:0cca7660c03670e68b41dcb416a0d71aa4828f2a902e299e8c8a5aa52f3b2706",
+  "build": {
+    "version": "0.1.0",
+    "revision": "59600e06d717aa1a08801bd94bec3f8702b1dde0",
+    "dirty": "true"
+  },
+  "checks": [],
+  "cleanup": [
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "network",
+      "removed": true
+    }
+  ],
+  "runner_sha256": "2b85918a20fc388a161a3832119f7c43fe1870e63dd6024545a022129a865ae6",
+  "limitations": "Local synthetic workload only; process RSS is not total cgroup memory. No live API, ABS or Unraid workload; no latency or production memory guarantee."
+}

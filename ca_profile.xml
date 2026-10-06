@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommunityApplications>
+  <Profile>A read-only AudiobookDB metadata adapter for Audiobookshelf, maintained by H2OKing89. Install with Docker Compose or the Unraid Docker template. Configuration and support are available in the GitHub repository and issue tracker.</Profile>
+  <Icon>https://raw.githubusercontent.com/H2OKing89/abs-audiobookdb/main/icon.svg</Icon>
+  <WebPage>https://github.com/H2OKing89/abs-audiobookdb</WebPage>
+</CommunityApplications>

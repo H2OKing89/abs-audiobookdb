@@ -1,6 +1,6 @@
-# Private adapter deployment
+# Adapter deployment
 
-Status: Verified with disposable private deployment  
+Status: Verified disposable and persistent Unraid deployments  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (private MVP)
@@ -94,5 +94,45 @@ with ABS.
 
 Add the host/TLS override files only for your chosen layout. Build/start the
 stack and select autostart if desired. Standalone `docker compose up` creates
-containers but does not itself register a Compose Manager stack. No permanent
-stack or live ABS provider was installed by the recorded acceptance trials.
+containers but does not itself register a Compose Manager stack. The historical
+disposable acceptance trials installed no permanent stack;
+[EVD-021](evidence/EVD-021-persistent-unraid-deployment.md) records the later
+persistent installation. The owner subsequently reports live ABS provider setup
+complete. The [Unraid Docker template guide](unraid.md) covers the second
+supported packaging method.
+
+## Build directly from GitHub
+
+Add `compose.github.yaml` to build the adapter from a tested release's full
+commit SHA. Docker fetches the source and builds on the deployment host;
+GitHub Actions and a published container image are unnecessary.
+
+```bash
+export ADAPTER_VERSION=0.1.0
+export ADAPTER_SOURCE_REVISION=$(git rev-list -n 1 v0.1.0)
+docker compose -f compose.yaml -f compose.github.yaml up -d --build
+```
+
+Add `-f compose.host.yaml` for your selected host/LAN binding, or the native TLS
+override for HTTPS. Set contact and network using the same `.env` settings.
+`pull_policy: never` avoids a registry lookup for the locally built image.
+An existing image can start without fetching GitHub; `--build` fetches source
+again when an update is requested.
+
+For Unraid Compose Manager, put the GitHub build context from
+`compose.github.yaml` into the stack's `compose.yaml`, preserve the runtime
+settings from the base Compose file, and enable **Build on Update**. The
+**Update** action then fetches the configured SHA, builds and recreates the service.
+Set `ADAPTER_SOURCE_REVISION` and `ADAPTER_VERSION` in the stack environment,
+or substitute their exact values in its build configuration. Keep
+the stack's contact, network, bindings and labels locally configured; source
+updates do not replace these operator choices. Enable **Autostart** for restart
+after Docker/array startup. Container health is available at `/health`.
+
+[Persistent deployment evidence](evidence/EVD-021-persistent-unraid-deployment.md)
+records a running Compose Manager stack built directly from GitHub. Its health
+was checked from the LAN and the actual ABS container; live provider
+configuration and a host reboot were not part of this check.
+To roll back, retain the old image and configuration before an update. Restore
+the saved image or select its verified commit SHA/version and run **Update**.
+Check `/adapter version`, health and ABS connectivity. See [releases](releases.md).

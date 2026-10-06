@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"crypto/x509"
+	"encoding/json"
 	"errors"
 	"log/slog"
 	"net"
@@ -15,6 +16,7 @@ import (
 	"time"
 
 	"abs-audiobookdb/internal/audiobookdb"
+	"abs-audiobookdb/internal/buildinfo"
 	"abs-audiobookdb/internal/config"
 	"abs-audiobookdb/internal/provider"
 	"abs-audiobookdb/internal/server"
@@ -63,6 +65,9 @@ func health(get func(string) string) error {
 }
 func run() error {
 	if len(os.Args) > 1 {
+		if len(os.Args) == 2 && (os.Args[1] == "version" || os.Args[1] == "--version") {
+			return json.NewEncoder(os.Stdout).Encode(buildinfo.Current())
+		}
 		if len(os.Args) == 2 && os.Args[1] == "health" {
 			return health(os.Getenv)
 		}
@@ -96,7 +101,8 @@ func run() error {
 	}
 	done := make(chan error, 1)
 	go func() { done <- httpServer.Serve(listener) }()
-	logger.Info("started", "version", "0.1", "tls", cfg.CertFile != "")
+	info := buildinfo.Current()
+	logger.Info("started", "version", info.Version, "revision", info.Revision, "dirty", info.Dirty, "tls", cfg.CertFile != "")
 	select {
 	case err := <-done:
 		if !errors.Is(err, http.ErrServerClosed) {
