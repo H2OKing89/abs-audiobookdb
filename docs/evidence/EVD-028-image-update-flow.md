@@ -75,6 +75,11 @@ hyphens. Removed the created temporary metadata and corrected the runner's
 guard; the second run passed. The host still reports unsupported swap limits;
 configured RAM was verified without claiming a swap guarantee.
 
+Anonymous GHCR token request for this repository returned HTTP 403. No GHCR
+Docker login was available on the development host. Public tags were not pushed
+or promoted; [PR #3](https://github.com/H2OKing89/abs-audiobookdb/pull/3) remains
+draft until public image verification is possible.
+
 ## Synthetic or live classification
 
 Synthetic local regressions and fixtures on actual Unraid. No upstream searches,
