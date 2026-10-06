@@ -1,0 +1,75 @@
+{
+  "captured_at_utc": "20261006T014622844220Z",
+  "classification": "synthetic_isolated_container_load",
+  "outcome": "Pass",
+  "stage": "complete",
+  "reason": null,
+  "duration_seconds": 250.572,
+  "image_id": "sha256:ef6dac63ccff77da7cce93f32327739506511465755fb3f030fff02becbf2c99",
+  "build": {
+    "version": "0.1.0",
+    "revision": "26a3845e79d343905598ebeb9f05c75848a30056",
+    "dirty": "false"
+  },
+  "memory": {
+    "samples": 2484,
+    "peak_process_rss_bytes": 28012544,
+    "last_process_rss_bytes": 18825216,
+    "limit_bytes": 268435456,
+    "oom_killed": false,
+    "restarts": 0
+  },
+  "checks": [
+    {
+      "check": "24_large_cold_searches_at_three_concurrent",
+      "outcome": "Pass",
+      "max_seconds": 7.549,
+      "matches_each": 6,
+      "detail_response_bytes": 921600
+    },
+    {
+      "check": "large_entry_cache_turnover",
+      "outcome": "Pass",
+      "refetch_calls": 10
+    },
+    {
+      "check": "sustained_three_worker_warm_searches",
+      "outcome": "Pass",
+      "seconds": 180,
+      "searches": 667,
+      "max_seconds": 7.565,
+      "initial_warm_auth_calls": 1
+    },
+    {
+      "check": "deadline_slow_response",
+      "outcome": "Pass",
+      "status": 504
+    },
+    {
+      "check": "upstream_size_oversized_response",
+      "outcome": "Pass",
+      "status": 502
+    },
+    {
+      "check": "upstream_size_oversized_mapping",
+      "outcome": "Pass",
+      "status": 502
+    }
+  ],
+  "cleanup": [
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "container",
+      "removed": true
+    },
+    {
+      "resource": "network",
+      "removed": true
+    }
+  ],
+  "runner_sha256": "ee6a85502217c2bdb6a0186ddf8b79a80626a7f1078e29b42d3710428cf9976d",
+  "limitations": "Local synthetic workload only; process RSS is not total cgroup memory. No live API, ABS or Unraid workload; no latency or production memory guarantee."
+}
