@@ -1,6 +1,6 @@
 # Unraid Docker template and Apps publication
 
-Status: Template runtime verified; public registry publication and CA review pending  
+Status: Template runtime and public image verified; CA review pending  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
@@ -12,23 +12,28 @@ for publishing the app in Community Applications (Unraid Apps).
 ## Docker template availability
 
 The [template](../templates/abs-audiobookdb.xml) targets
-`ghcr.io/h2oking89/abs-audiobookdb:latest`. Installing through this registry
-requires the image to be published and public; that step is pending.
+`ghcr.io/h2oking89/abs-audiobookdb:latest`. The image is public and can be pulled
+without a registry login.
 An XML file in this repository does not mean the app is listed in Apps.
 
+For manual template installation, import the XML into
+`/boot/config/plugins/dockerMan/templates-user/my-abs-audiobookdb.xml`, select
+it under **Docker → Add Container → Template**, and supply **Operator contact**
+before applying. Keep the default public Repository value.
+
+### Optional offline archive installation
+
 The [v0.1.0 release](https://github.com/H2OKing89/abs-audiobookdb/releases/tag/v0.1.0)
-includes an image archive. For manual installation, download the archive and
+also includes an image archive. For offline installation, download the archive and
 `SHA256SUMS`, verify the archive's SHA-256 value, then load it on Unraid:
 
 ```bash
 docker load -i abs-audiobookdb-0.1.0-linux-amd64-image.tar.gz
 ```
 
-Import the XML into
-`/boot/config/plugins/dockerMan/templates-user/my-abs-audiobookdb.xml` and
-select it under **Docker → Add Container → Template**. Set **Repository** to
-`abs-audiobookdb:0.1.0` for the loaded local image, and supply **Operator contact**
-before applying. This local-image substitution was tested with Docker Manager.
+Import the XML as above and set **Repository** to `abs-audiobookdb:0.1.0`
+for the loaded local image. This local-image substitution was tested with
+Docker Manager.
 
 ## Template configuration
 
@@ -50,7 +55,7 @@ See [advanced deployment](deployment.md) for native TLS.
 
 ## Updates through Unraid's Docker page
 
-After the public image is available, keep **Repository** set to
+Keep **Repository** set to
 `ghcr.io/h2oking89/abs-audiobookdb:latest`. Use **Check for Updates** and the
 container's **Update** action. **Force Update** downloads/reapplies the image
 when you want to pull again. Your saved container settings are retained.
@@ -67,8 +72,9 @@ a public repository, an OSI license, valid app XML, and a nonempty repository
 profile. This repository supplies MIT `LICENSE`, `ca_profile.xml`, `icon.svg`,
 and the app XML under `templates/`.
 
-After publishing the image, verify an anonymous pull from a clean Docker
-configuration, then test template installation. In the
+[Public image verification](evidence/EVD-029-registry-publication.md) passed
+on local Docker and actual Unraid. Test a fresh template installation before
+submission. In the
 [submission portal](https://ca.unraid.net/submit), enter this repository's URL,
 complete **Validate**, **Scan**, and **Submit**, and address reviewer feedback.
 Listing remains subject to Unraid review. Support goes to this project's

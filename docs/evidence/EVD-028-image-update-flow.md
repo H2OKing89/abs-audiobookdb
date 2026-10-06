@@ -1,6 +1,6 @@
 # Image installation, update and rollback checks
 
-Status: Local and disposable Unraid checks pass; GHCR public pulls pending login  
+Status: Local and disposable Unraid checks pass; public pulls verified in EVD-029  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
@@ -56,8 +56,9 @@ Raw host/test logs and configuration-hash snapshots remain ignored under
 Image pulls support the tested update/rollback flow and preserve settings.
 Runtime restrictions remain active. Buttons were traced to installed backend
 code; no rendered browser click-through or app-store installation is claimed.
-Anonymous GHCR access and real registry promotion remain pending a package-write
-login/public visibility. The installed adapter was not migrated or updated.
+Anonymous GHCR access and real registry promotion were blocked at this initial
+check; [EVD-029](EVD-029-registry-publication.md) records the subsequent pass.
+The installed adapter was not migrated or updated.
 
 ## Observed outcome
 
@@ -77,8 +78,9 @@ configured RAM was verified without claiming a swap guarantee.
 
 Anonymous GHCR token request for this repository returned HTTP 403. No GHCR
 Docker login was available on the development host. Public tags were not pushed
-or promoted; [PR #3](https://github.com/H2OKing89/abs-audiobookdb/pull/3) remains
-draft until public image verification is possible.
+or promoted at that time; [PR #3](https://github.com/H2OKing89/abs-audiobookdb/pull/3)
+was kept draft. EVD-029 supersedes this publication blocker after owner login
+and the package visibility change.
 
 ## Synthetic or live classification
 

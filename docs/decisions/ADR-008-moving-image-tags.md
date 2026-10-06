@@ -1,6 +1,6 @@
 # Pullable release images and updates through Unraid
 
-Status: Accepted; public registry verification pending  
+Status: Accepted; public registry verification passed  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
@@ -37,11 +37,12 @@ anonymous access, then promote the same image to latest and verify it again.
 Never republish an exact version with different bytes or promote an older
 release accidentally. Initial publication uses the original verified v0.1.0
 artifact, not a later main build carrying the same version. GitHub Actions stays
-disabled. Registry instructions are explicitly pending until public pulls pass.
+disabled. Public pulls passed in EVD-029; image installation guides are available.
 
 ## Evidence and source versions
 
 [Distribution checks](../evidence/EVD-028-image-update-flow.md),
+[public registry verification](../evidence/EVD-029-registry-publication.md),
 [release procedure](../releases.md),
 [GitHub registry guidance](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry),
 and [Compose Manager user guide](https://github.com/mstrhakr/compose_plugin/blob/main/docs/user-guide.md).

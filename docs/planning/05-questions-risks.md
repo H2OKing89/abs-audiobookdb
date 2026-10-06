@@ -36,5 +36,6 @@ The user now authorizes a public MIT source repository (ADR-005), superseding th
 
 ADR-007 additionally records owner-authorized executable/image packaging and
 Compose/Unraid support. EVD-025 records v0.1.0 publication and target checks.
-Public GHCR access and CA listing remain pending separate steps; the release
-archive supports manual image installation.
+ADR-008 and EVD-029 record public GHCR exact/latest image verification.
+CA listing remains a separate submission/review step; the release archive
+also supports manual image installation.

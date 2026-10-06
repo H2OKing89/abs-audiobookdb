@@ -1,6 +1,6 @@
 # Docker setup and advanced configuration
 
-Status: Source deployments verified; public image publication pending  
+Status: Public image and source deployments verified  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (private MVP)
@@ -12,9 +12,8 @@ Docker commands and those who need additional configuration.
 ## Docker Compose
 
 Requires Docker Compose, an AudiobookDB API key, and a Docker network shared
-with Audiobookshelf. This method pulls a prebuilt image. Public registry
-publication is pending; use the [source-build option](#build-directly-from-github)
-until anonymous image pulls are verified.
+with Audiobookshelf. This method pulls the public prebuilt image; no registry
+login is required.
 
 ```bash
 git clone https://github.com/H2OKing89/abs-audiobookdb.git

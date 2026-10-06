@@ -1,6 +1,6 @@
 # Install on Unraid using your browser
 
-Status: Image setup prepared; public image verification and Apps listing pending  
+Status: Public image verified; Apps listing pending  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
@@ -9,9 +9,7 @@ This guide uses **Compose Manager Plus** in Unraid's web interface. You paste
 one configuration and change two values. No terminal commands, downloaded
 image archives, or source checkout are needed.
 
-**Public image publication is pending.** The image-based steps below become
-available after anonymous pulls are verified. For installation before then, use
-the [source-build option](deployment.md#build-directly-from-github).
+The image is public; no GitHub account or registry login is required.
 
 The adapter is not in Unraid Apps yet. If it is already running on your server,
 skip installation and [connect Audiobookshelf](audiobookshelf.md).
@@ -103,8 +101,7 @@ version, such as `ghcr.io/h2oking89/abs-audiobookdb:0.1.0`, save, and run
 ready to receive newer releases again.
 
 An older installation with a `build:` section is a source build. Back up its
-configuration and switch that stack to the image-based example above after
-publication. Remove the build section, disable Build on Update, and preserve
+configuration and switch that stack to the image-based example above. Remove the build section, disable Build on Update, and preserve
 your contact, network and port choices. The native Docker **Force Update**
 control is for Docker-template installations; use the stack controls for Compose.
 
@@ -113,7 +110,7 @@ control is for Docker-template installations; use the stack controls for Compose
 | Problem | What to do |
 | --- | --- |
 | Cannot find the adapter in Apps | Install Compose Manager Plus and follow this guide. The adapter's own listing is pending. |
-| Image pull fails | Public publication may still be pending; check this page's status. After publication, check internet access and the image name. |
+| Image pull fails | Check internet access and that the image name and tag match the example. No registry login is required. |
 | Error says a port is already allocated | Change the first `8080` in the port line to an unused port, such as `8081`. Save and run Compose Up again. Use that port in the health and provider URLs. |
 | Container exits with a contact error | Check that you replaced `YOUR_EMAIL_ADDRESS` with your real email or HTTPS contact URL. |
 | Browser cannot open the health page | Confirm the stack is running and the IP and port match the configuration. Open the container's logs in Unraid's Docker page for errors. |

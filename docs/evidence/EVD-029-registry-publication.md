@@ -1,6 +1,6 @@
 # Public registry publication
 
-Status: Version image uploaded; public visibility and latest promotion pending  
+Status: Pass; public exact/latest images verified locally and on actual Unraid  
 Updated: 2026-10-05  
 Owner: Quentin  
 Baseline: 1.0 (runtime contract unchanged)
@@ -19,14 +19,16 @@ GitHub [visibility instructions](https://docs.github.com/en/packages/learn-githu
 
 ## Captured date and environment
 
-2026-10-05 America/Chicago, local Linux/amd64 Docker host and actual GHCR.
+2026-10-05 America/Chicago, local Linux/amd64 Docker host, actual GHCR,
+and actual Unraid 7.3.2 / Docker 29.5.3.
 
 ## Version, commit or content hash
 
 - Version: 0.1.0, revision `59415d679189a7e5ae56ef997e493afc57bd9298`, clean.
 - Image ID: `sha256:e00a4b25e414b5b44a5cdbb76ea3f4d8203286f4441261a9eeb4791c9f48d02f`.
 - Registry digest: `sha256:48285e1c765ed8b92289991670da02b1c6ab2c13d3108f9c69cff200543d9138`.
-- Exact reference: `ghcr.io/h2oking89/abs-audiobookdb:0.1.0`.
+- References: `ghcr.io/h2oking89/abs-audiobookdb:0.1.0` and
+  `ghcr.io/h2oking89/abs-audiobookdb:latest`; both share the digest above.
 
 ## Method and reproduction steps
 
@@ -35,7 +37,13 @@ publisher checks archived artifacts, load acceptance, clean tagged source,
 executable identity and OCI metadata. It checks remote exact-tag identity
 before promoting latest and uses a fresh empty Docker config for anonymous
 pull verification. Read package visibility through GitHub's authenticated API
-without printing credentials.
+without printing credentials. After the owner sets the package to Public,
+rerun the publisher. On Unraid, pull both tags using a fresh empty temporary
+Docker config. Start a disposable container without networking, with 99:100,
+read-only filesystem, 256 MiB RAM, all capabilities dropped and no new privileges.
+Check internal health, version, restrictions and graceful exit; remove the
+container/config. Compare the persistent adapter's ID/image/start time/health
+before and after. No registry credential is copied to Unraid.
 
 ## Sanitized artifact path
 
@@ -45,23 +53,40 @@ Docker's configuration outside this repository and are not redistributed.
 
 ## Claims supported and limitations
 
-Authenticated version publication passed and preserves the original tested
-image. The registry package initially remains private; public pulls, latest
-promotion, and installation from public GHCR are not yet verified. PR #3 stays
-draft pending those checks. No persistent Unraid deployment was updated.
+Authenticated publication and anonymous exact/latest pulls passed, preserving
+the original tested image. Public image health, identity, runtime restrictions
+and shutdown passed on actual Unraid. EVD-028 separately covers the installed
+Compose Manager update backend with fixture images. No rendered button
+click-through or Community Applications listing is claimed. No persistent
+Unraid deployment was updated.
 
 ## Observed outcome
 
 Pass: archive/identity/load verification, initial exact-version push and
 authenticated pull with the expected image ID. GitHub package API reports
-one version and private visibility. Anonymous pull fails as expected for the
-private package; publisher stops before changing latest. Owner was directed
-to Package settings → Change visibility → Public. GitHub Actions remains disabled.
+one version and private visibility on the initial attempt. Anonymous pull
+failed as expected for the private package; publisher stopped before changing
+latest. Owner was directed to Package settings → Change visibility → Public.
+This initial failure is preserved.
+
+After the owner changed visibility, the publisher reused the original exact
+version, verified an anonymous pull, promoted that same image to latest and
+verified an anonymous latest pull. The authenticated package API reports public
+visibility; both tags have the expected image ID and registry digest. The
+unauthenticated GitHub package metadata API returned 401; anonymous Docker
+registry pulls, rather than that API, establish public download access.
+
+Both anonymous pulls also passed on actual Unraid. The disposable public-image
+container passed health, clean 0.1.0 build identity, runtime restrictions and
+graceful shutdown (exit 0). It was removed along with the empty Docker config.
+The live adapter's container ID, image and start time remained unchanged and
+healthy. GitHub Actions remains disabled.
 
 ## Synthetic or live classification
 
-Actual GHCR publication and authenticated/anonymous read checks. No upstream
-metadata traffic or application/account writes.
+Actual GHCR publication and authenticated/anonymous read checks; disposable
+container on actual Unraid. No upstream metadata traffic, provider edits or
+changes to the persistent adapter.
 
 ## Sanitization and redistribution notes
 

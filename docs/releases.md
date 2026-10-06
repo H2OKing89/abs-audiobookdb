@@ -67,7 +67,11 @@ an anonymous `latest` pull too and refuses promotion of an older release.
 
 On first publication GHCR creates a private package. Set its visibility to
 **Public** in the [package settings](https://github.com/users/H2OKing89/packages/container/abs-audiobookdb/settings),
-then rerun the publisher. An existing matching exact version is reused; the
+then rerun the publisher. **Changing visibility is a one-time step per package**;
+future version tags in this package remain public. Docker login is reused until
+its credentials expire or are removed. Each release still needs local checks,
+packaging and publication; a Git push alone does not publish an image.
+An existing matching exact version is reused; the
 script does not overwrite it. A failed public check leaves `latest` unchanged.
 The image's OCI source label connects it to this repository.
 

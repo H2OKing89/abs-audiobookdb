@@ -28,12 +28,10 @@ Audiobookshelf, which applies the changes you select to your library.
 | Docker Compose; comfortable with commands | [Docker setup](docs/deployment.md#docker-compose) |
 | Adapter already installed | [Connect it to Audiobookshelf](docs/audiobookshelf.md) |
 
-**Current release: v0.1.0, an early development release.** The adapter is not
-listed in Unraid Apps yet, and its public container registry image is pending.
-The walkthroughs describe the simpler image-based install and update buttons.
-Those steps become available once public image pulls are verified. Until then,
-the [advanced source-build option](docs/deployment.md#build-directly-from-github)
-remains available.
+**Current release: v0.1.0, an early development release.** The adapter is
+available as a [public container image](https://github.com/users/H2OKing89/packages/container/package/abs-audiobookdb).
+Follow the walkthroughs to install it and use update buttons. The adapter is
+not listed in Unraid Apps yet.
 
 Normal installations use `:latest` for tested releases; install updates through
 your Unraid or Compose Manager update button. Exact version tags remain
